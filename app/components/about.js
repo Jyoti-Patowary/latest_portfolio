@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/about.module.css';
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import Link from 'next/link';
+import Image from 'next/image';
 
 function About() {
   return (
@@ -10,7 +11,7 @@ function About() {
         <div className={styles.container}>
           <div className={styles.aboutContent}>
             <div className={styles.imageContainer}>
-              <img src="" alt="Your Alt Text" className={styles.profileImage} />
+              <Image src="" alt="Your Alt Text" className={styles.profileImage} width={0} height={0} sizes='100vw'/>
             </div>
             <div className={styles.textContainer}>
               <h1 className={styles.aboutTitle}>About me</h1>
