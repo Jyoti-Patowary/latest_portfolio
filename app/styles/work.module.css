@@ -171,9 +171,9 @@
     line-height: 25px;
   }
   
-  .image{
+  /* .image{
     height: 100%;
-  }
+  } */
 
   @media only screen and (max-width: 768px) {
     .container {
@@ -193,14 +193,15 @@
 
   .workCard{
     padding: 20px;
+    align-items: center;
   }
 
-  .workImage{
-    height: 242px;  
+ .workImage{
+    height: fit-content;  
   }
 
   .image{
-    height: 64vh !important;
-  }
+    height: fit-content;
+  } 
 
   }

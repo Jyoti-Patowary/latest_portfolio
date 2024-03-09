@@ -112,4 +112,8 @@
     .blogContainer{
       flex-direction: column;
     }
+
+    .blogCardsImage{
+      height: 200px !important;
+    }
   }

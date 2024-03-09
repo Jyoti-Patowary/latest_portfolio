@@ -54,6 +54,7 @@ async function Blogs() {
                   sizes="100vw"
                   style={{ width: '100%', height: '400px', borderRadius: '10px' }}
                   alt={`Blog Image - ${index + 1}`}
+                  className={styles.blogCardsImage}
                 />
                 <div className={styles.blogCardDetails}>
                   <h4>{blog.tag}</h4>
