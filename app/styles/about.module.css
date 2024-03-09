@@ -74,8 +74,20 @@
   }
   
   .profileImage {
-    width: 100%; /* Ensure the image takes the full width of its container */
-    max-width: 400px; /* Set a maximum width for responsiveness */
-    border-radius: 5px; /* Optional: Add border-radius for a rounded image */
+    width: 100%; 
+    max-width: 400px; 
+    border-radius: 5px;
   }
   
+  @media only screen and (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+    }
+    .aboutContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+  }

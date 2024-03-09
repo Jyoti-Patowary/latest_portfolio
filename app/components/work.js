@@ -28,12 +28,13 @@ function Work() {
                 <span className={styles.iconWork}><IoIosArrowRoundForward size={25}/></span></div>
               </div>
               <div className={styles.workImage}>
-              <div className={styles.image}>
+              <div >
                   <Image src={everfur} 
                     width={0}
                     height={0}
                     sizes="100vw"
-                    style={{ width: '100%', height: 'auto', borderRadius: '10px' }} alt='Everfur Site'/>
+                    style={{ width: '100%', height: 'max-content', borderRadius: '10px' }}
+                    className={styles.image} alt='Everfur Site'/>
                 </div>
               </div>
             </div>
