@@ -29,18 +29,15 @@ function truncateTitle(title) {
 }
 
 async function Blogs() {
-    const url = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@jpatowary8";
-    const data = await getData();
-    // console.log(data);
-  
-  
+  const url = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@jpatowary8";
+  const data = await getData();
+  // console.log(data);
+
   async function getData() {
     const response = await fetch(url);
     const data = await response.json();
     return data;
   }
-  
-
 
   return (
     <div>
