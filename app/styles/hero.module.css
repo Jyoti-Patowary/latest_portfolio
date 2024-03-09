@@ -1,0 +1,85 @@
+.heroContainer {
+    background-color: #edece5;
+    /* height: 100vh; */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero_heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 110px 0;
+    text-transform: uppercase;
+}
+
+.hero_heading h2 {
+    font-size: 4em;
+}
+
+.hero_heading h2.typewriter {
+    font-size: 24px;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowed text */
+    border-right: 2px solid #333; /* Simulate the typing cursor */
+    animation: typing 4s steps(30, end), blink-caret 0.5s infinite;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  
+  @keyframes blink-caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+.highlight {
+    color: red;
+    position: relative;
+}
+
+.hero_button {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.hero_button span {
+    padding: 7px 10px;
+    background-color: red;
+    border-radius: 10px 0 0 10px;
+    color: white;
+}
+
+.icon {
+    transform: rotate(-35deg);
+}
+
+.hero_button button {
+    padding: 12px;
+    border: none;
+    background-color: white;
+    color: black;
+    /* border: 1px solid black; */
+    border-radius: 0px 10px 10px 0px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 768px) {
+    .hero_sub {
+        flex-direction: column;
+    }
+
+}

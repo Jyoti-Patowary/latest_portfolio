@@ -1,0 +1,18 @@
+ [
+    {
+      "title": "Web Development",
+      "description": "We specialize in crafting responsive and user-friendly websites using the latest technologies. From front-end design to back-end development, we ensure a seamless online experience for your users.",
+      "image": ""
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "Our design team focuses on creating intuitive and visually appealing user interfaces. We believe in the power of great design to enhance user engagement and satisfaction.",
+      "image": ""
+    },
+    {
+      "title": "E-commerce Solutions",
+      "description": "Boost your online business with our custom e-commerce solutions. We provide secure and scalable platforms tailored to your specific needs, ensuring a seamless online shopping experience.",
+      "image": ""
+    }
+  ]
+  

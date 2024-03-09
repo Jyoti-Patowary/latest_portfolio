@@ -1,0 +1,81 @@
+/* about.module.css */
+
+.aboutSection {
+    /* background-color: #f8f8f8; */
+    padding: 110px 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .aboutContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+  }
+  
+  .textContainer {
+    flex: 1;
+    padding: 25px 0;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    padding-left: 20px; 
+    background-color: #0056b3;
+    border-radius: 20px;
+  }
+  
+  .aboutTitle {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .aboutText {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .aboutMe{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .aboutSocial{
+    display: flex;
+    gap: 20px;
+  }
+  
+  .ctaButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #F43334;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .ctaButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .profileImage {
+    width: 100%; /* Ensure the image takes the full width of its container */
+    max-width: 400px; /* Set a maximum width for responsiveness */
+    border-radius: 5px; /* Optional: Add border-radius for a rounded image */
+  }
+  

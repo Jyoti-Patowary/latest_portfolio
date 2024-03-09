@@ -1,0 +1,56 @@
+/* styles/footer.module.css */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 60px 110px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.footerContainer p{
+  flex: 1;
+}
+
+.section {
+  margin: 20px 0;
+  flex: 1;
+}
+
+.followSection {
+  flex: 1;
+  text-align: center;
+}
+
+.newsSection {
+ flex: 1;
+}
+
+.checkboxLabel {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.checkboxInput {
+  width: 20px; 
+}
+
+.emailInput {
+  width: 100%; 
+  margin-left: 5px;
+}
+
+.copyrightSection {
+  text-align: center;
+  padding: 20px 0;
+}

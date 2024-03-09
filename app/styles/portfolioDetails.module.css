@@ -1,0 +1,38 @@
+.portfolioHeading{
+    background-color: #edece5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    /* background-color: #edece5; */
+}
+
+.portfolioHeadingText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 110px 0;
+    text-transform: uppercase;
+  
+}
+
+.portfolioHeadingText h2 {
+    font-size: 4em;
+}
+
+.portfolioDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 50px;
+}
+
+.portfolioDetailsImage{
+    position: relative;
+    right: 50%;
+    left: 50%;
+}

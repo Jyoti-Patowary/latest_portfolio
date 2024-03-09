@@ -1,0 +1,32 @@
+.stacksContainer {
+    padding: 50px 0;
+    background-color: #edece5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.stackContainer {
+    display: flex;
+    animation: scrollAnimation 30s linear infinite;
+    gap: 6em;
+}
+
+
+
+/* .StacksLogo {
+    width: 100px;
+    height: 100px;
+} */
+
+@keyframes scrollAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+    }
+}
