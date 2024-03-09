@@ -3,7 +3,7 @@
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 60px 110px;
+  padding: 80px 110px 0 110px;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -11,11 +11,12 @@
 
 .footerContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid white;
-  gap: 20px;
-  padding-bottom: 20px;
+  gap: 51px;
+  padding-bottom: 51px;
 }
 
 .footerContainer p{
@@ -29,7 +30,9 @@
 
 .followSection {
   flex: 1;
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+    gap: 43px;
 }
 
 .newsSection {
@@ -53,4 +56,33 @@
 .copyrightSection {
   text-align: center;
   padding: 20px 0;
+}
+
+.footerText{
+  font-size: 45px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.followText{
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: 40px 10px 0 10px;
+  }
+
+  .footerContainer {
+    gap: 50px; 
+  }
+
+  .footerText {
+    font-size: 24px; 
+    text-align: center;
+  }
+
+  .followText {
+    font-size: 14px; 
+  }
 }

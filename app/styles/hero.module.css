@@ -84,10 +84,11 @@
 
     .hero_heading{
         align-items: flex-start;
+        padding: 50px 0;
     }
 
     .hero_heading h2 {
-        font-size: 2.5em;
+        font-size: 3em;
         text-align: left;
     }
 

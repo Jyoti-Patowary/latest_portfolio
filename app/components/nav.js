@@ -6,10 +6,10 @@ import { useState } from "react";
 import Image from "next/image";
 
 const menu_items = [
-  { name: 'Work', link: "./portfolio" },
-  { name: 'Expertise', link: "/services" },
-  { name: 'Why us?', link: "/about" },
-  { name: 'Blogs', link: "/blog" },
+  { name: 'Work', link: "/pages/portfolio-details" },
+  // { name: 'Expertise', link: "/services" },
+  { name: 'Why Me?', link: "/pages/about" },
+  { name: 'Blogs', link: "/pages/blogs" },
   // { name: 'Contact', link: "/contact" },
 ];
 
@@ -28,10 +28,12 @@ function Nav() {
   return (
     <div className={styles.navbar}>
         <nav className={styles.nav_container}>
+        <Link href="/">    
       <div className={styles.logo}>
         <Image src="/logo.png" width={50} height={50} alt="logo"/>
         <span className={styles.dot}>EEP.</span>
       </div>
+        </Link>
 
       {/* Desktop View */}
       <div className={styles.navlinks}>
@@ -40,7 +42,9 @@ function Nav() {
             {item.name}
           </Link>
         ))}
-          <button className={styles.button}>Contact Us</button>
+          <Link href="/pages/contact">
+          <button className={styles.button}>Contact</button>
+          </Link>
       </div>
 
     
