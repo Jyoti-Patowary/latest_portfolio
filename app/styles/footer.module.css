@@ -68,9 +68,30 @@
   font-size: 20px;
 }
 
+.backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.backToTop:hover {
+  background-color: #fff;
+  color: #333;
+}
+
 @media only screen and (max-width: 768px) {
   .footer {
-    padding: 40px 10px 0 10px;
+    padding: 40px 20px 0 20px;
   }
 
   .footerContainer {
@@ -84,5 +105,9 @@
 
   .followText {
     font-size: 14px; 
+  }
+
+  .backToTop {
+    padding: 5px;
   }
 }

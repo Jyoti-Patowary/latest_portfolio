@@ -1,9 +1,31 @@
-// components/Footer.js
-
+'use client'
+import { useEffect, useState } from 'react';
 import styles from '../styles/footer.module.css';
-import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { FaArrowUp, FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  const [showScroll, setShowScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    if (!showScroll && window.pageYOffset > 400) {
+      setShowScroll(true);
+    } else if (showScroll && window.pageYOffset <= 400) {
+      setShowScroll(false);
+    }
+  };
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScrollTop);
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  }, [showScroll]);
+
   return (
     <div className={styles.footer}>
       <div className={styles.footerContainer}>
@@ -27,9 +49,15 @@ const Footer = () => {
         </div> */}
 
       </div>
+
+      {showScroll && (
+        <div className={styles.backToTop} onClick={scrollTop}>
+          <FaArrowUp size={15} />
+        </div>
+      )}
       <div className={styles.copyrightSection}>
-        <p>Copyright © 2024</p>
-      </div>
+          <p>Copyright © {currentYear}</p>
+        </div>
     </div>
   );
 };
