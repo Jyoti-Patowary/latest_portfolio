@@ -1,93 +1,264 @@
 /* about.module.css */
 
 .aboutSection {
-    /* background-color: #f8f8f8; */
-    padding: 110px 0;
+  /* background-color: #f8f8f8; */
+  padding: 80px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.textContainer {
+  flex: 1;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.imageContainer {
+  flex: 0.8;
+  padding-left: 20px;
+  /* background-color: #0056b3; */
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.aboutHeading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* background-color: #edece5; */
+}
+
+.aboutTitle {
+  font-size: 36px;
+  color: #333;
+  /* margin-bottom: 20px; */
+}
+
+.aboutSubTitle {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.aboutText {
+  font-size: 16px;
+  line-height: 30px;
+  color: #555;
+  text-align: justify;
+}
+
+.aboutMe {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.aboutSocial {
+  display: flex;
+  gap: 20px;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f43334;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.ctaButton:hover {
+  background-color: #0056b3;
+}
+
+.profileImage {
+  width: 67%;
+  height: 368px;
+  border-radius: 20px;
+}
+
+/* About Page */
+
+.containerTwo {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.about_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+.imageSection {
+  flex: 0.5;
+}
+
+.aboutTextContainer {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center;  */
+  gap: 80px;
+}
+
+  .aboutTitle span {
+    color: #f43334;
   }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.imageOne {
+  width: 100%;
+  height: 422px;
+  border-radius: 20px;
+}
+
+.passion{
+  padding: 20px;
+  background-color: #EDECE5;
+}
+
+.passion_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.passion_container p{
+  text-align: center;
+}
+
+.tech{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 56px 41px;
+    /* width: 70%; */
+}
+
+.tools{
+  padding: 25px;
+  border: 1px solid #EDECE5;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* About Page Ends */
+
+@media only screen and (max-width: 768px) {
+  /* .container {
+    padding: 0 10px;
+  } */
+
+  .about_container{
+    flex-direction: column;
+    padding: 0 10px;
   }
-  
+
+  .aboutTextContainer{
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .aboutTitle{
+    text-align: center;
+    font-size: 26px;
+  }
+
+  .aboutText{
+    text-align: justify !important;
+  }
+
+  .passion_container{
+    padding: 0 10px;
+  }
+
+  .passion{
+    padding: 0 10px;
+  }
   .aboutContent {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     gap: 50px;
   }
-  
-  .textContainer {
-    flex: 1;
-    padding: 25px 0;
-  }
-  
-  .imageContainer {
-    flex: 1;
-    padding-left: 20px; 
-    background-color: #0056b3;
-    border-radius: 20px;
-  }
-  
-  .aboutTitle {
-    font-size: 36px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .aboutText {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 20px;
+
+  .containerTwo{
+    padding: 50px 10px;
   }
 
-  .aboutMe{
-    display: flex;
+  .tech{
+    gap: 0;
+  }
+
+  .profileImage{
+    width: max-content;
+    /* height:  max-content; */
+  }
+
+  .textContainer{
+    padding: 0 10px;
     align-items: center;
-    gap: 50px;
   }
 
-  .aboutSocial{
-    display: flex;
-    gap: 20px;
+  .aboutHeading{
+    align-items: center;
+    font-size: 26px;
   }
-  
-  .ctaButton {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #F43334;
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  
-  .ctaButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .profileImage {
-    width: 100%; 
-    max-width: 400px; 
-    border-radius: 5px;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .container {
-      padding: 0 20px;
-    }
-    .aboutContent {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 50px;
-    }
 
+  .ctaButton{
+    width: 50%;
+        text-align: center;
   }
+  
+}

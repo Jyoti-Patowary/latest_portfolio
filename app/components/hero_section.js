@@ -17,7 +17,7 @@ function Hero_section() {
                 }
             };
 
-            type(); // Start the typewriter effect immediately
+            type(); 
         };
 
         const typewriterElements = document.querySelectorAll(`.${styles.typewriter}`);

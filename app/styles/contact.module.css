@@ -1,0 +1,187 @@
+.contactContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.leftContainer {
+    width: 45%;
+    border-radius: 12px;
+    background-color: #EDECE5;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.rightContainer {
+    width: 45%;
+}
+
+.getTouch h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.chatWithUs,
+.callMe,
+.socialMedia {
+    margin-bottom: 20px;
+
+}
+
+.chatWithUs h4,
+.callMe h4,
+.socialMedia h4 {
+    font-size: 18px;
+    line-height: 47px;
+}
+
+.chatWithUs p,
+.callMe p,
+.socialMedia p {
+    line-height: 30px;
+}
+
+.chatWithUs a,
+.callMe a{
+    line-height: 30px;
+}
+
+.socialIcons a {
+    margin-right: 21px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 12px;
+    background-color: #EDECE5;
+    padding: 7px;
+}
+
+.socialIcons a:last-child {
+    margin-right: 0;
+}
+
+.rightContainer .contactForm h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.nameForm{
+    display: flex;
+    gap: 10px;
+}
+
+.firstName, .lastName{
+    width: 50%;
+}
+
+.rightContainer .contactForm form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rightContainer .contactForm form input,
+.rightContainer .contactForm form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.rightContainer .contactForm form textarea {
+    resize: none;
+}
+
+.whereToFind{
+    margin-bottom: 15px;
+}
+
+.rightContainer .contactForm form button {
+    padding: 20px;
+    background-color: #000;
+    color: #ccc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rightContainer .contactForm form button:hover {
+
+    background-color: #EDECE5;
+    color: #000;
+}
+
+@media only screen and (max-width: 768px){
+    .contactContainer {
+        flex-direction: column-reverse;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .leftContainer {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .rightContainer {
+        width: 100%;
+    }
+
+    .getTouch h3 {
+        font-size: 20px;
+    }
+
+    .chatWithUs h4,
+    .callMe h4,
+    .socialMedia h4 {
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    .chatWithUs p,
+    .callMe p,
+    .socialMedia p,
+    .chatWithUs a,
+    .callMe a {
+        line-height: normal;
+    }
+
+    .socialIcons a {
+        margin-right: 10px;
+        padding: 5px;
+    }
+
+    .rightContainer .contactForm h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .nameForm {
+        flex-direction: column;
+    }
+
+    .firstName,
+    .lastName {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .rightContainer .contactForm form input,
+    .rightContainer .contactForm form textarea {
+        width: 100%;
+    }
+
+    .rightContainer .contactForm form button {
+        padding: 15px;
+        font-size: 14px;
+    }
+}

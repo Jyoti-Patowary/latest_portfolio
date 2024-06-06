@@ -29,12 +29,14 @@
 
   .blogContainer{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 20px;
+    flex-wrap: wrap;
+    padding: 100px 0;
   }
 
   .blogCards{
-    width: 100%;
+    width: 30%;
     height: auto;
     background-color: #EDECE5;
     border: 2px solid white;
@@ -48,6 +50,11 @@
 
   .blogCards:hover{
     background-color: white;
+  }
+
+  .blogCardsImage{
+    background-size: cover;
+    border-radius: 12px;
   }
 
   .blogCardDetails{

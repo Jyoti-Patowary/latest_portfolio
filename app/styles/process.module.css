@@ -1,0 +1,87 @@
+.mainContainer {
+    padding: 20px;
+    background-color: #edece5;
+  }
+  
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    position: relative;
+    padding: 80px 0;
+  }
+  
+  .title {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  
+  .title span {
+    color: #f43334;
+  }
+  
+  .processSteps {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  
+  .processStep {
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column;
+    align-items: center;
+    text-align: center; */
+    /* background-color: white; */
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    position: relative;
+    /* width: 60%; */
+  }
+
+  .processContainer{
+    display: flex;
+    flex-direction: column;
+    /* width: 40%; */
+  }
+  
+  .processStep.left {
+    align-self: flex-start;
+  }
+  
+  .processStep.right {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .line {
+    align-self: center;
+    width: 75%;
+    height: 50px;
+  }
+  
+  .icon {
+    margin: 20px 0;
+  }
+  
+  .cta {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0070f3;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .button:hover {
+    background-color: #0057b3;
+  }
+  

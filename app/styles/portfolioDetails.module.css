@@ -1,4 +1,4 @@
-.portfolioHeading{
+.portfolioHeading {
     background-color: #edece5;
 }
 
@@ -6,33 +6,328 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
     /* background-color: #edece5; */
+}
+
+.detailContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
 }
 
 .portfolioHeadingText {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 110px 0;
+    padding: 80px 0;
     text-transform: uppercase;
-  
+
 }
 
 .portfolioHeadingText h2 {
     font-size: 4em;
 }
 
-.portfolioDetailsContainer{
+.portfolioDetailsContainer {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 60px;
     padding-top: 50px;
 }
 
-.portfolioDetailsImage{
+.portfolioDetailsImage {
+    border-radius: 12px;
+    width: 100%;
+    /* height: fit-content; */
+}
+
+.portfolioDetailsText {
+    display: flex;
+    align-items: flex-start;
+}
+
+.portfolioDetailsText h4 {
+    flex: 1;
+    font-size: 50px;
+}
+
+.portfolioDetailsText p {
+    flex: 1;
+    font-size: 17px;
+    line-height: 27px;
+    /* margin-bottom: 35px; */
+    padding: 10px;
+}
+
+.portfolioCategoryContainer {
+    padding: 60px 70px;
+    /* margin-bottom: 50px; */
+    border-radius: 12px;
+    background-color: #edece5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolioCategoryDate {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.portfolioCategoryDate h4 {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 27px;
+    margin-bottom: 5px;
+    color: #5355DF;
+    text-transform: uppercase;
+}
+
+.portfolioCategoryDate p {
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 29px;
+    color: #0F0E0E;
+}
+
+.portfolioPlanning {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.portfolioPlanning h4 {
+    font-size: 38px;
+    line-height: 52px;
+}
+
+.portfolioPlanning p {
+    font-size: 17px;
+    line-height: 27px;
+}
+
+.ClientCare {
+    display: flex;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+.ClientCareGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+    padding: 30px 50px 30px 30px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    border-color: rgba(15, 14, 14, 0.1);
+    transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
     position: relative;
-    right: 50%;
-    left: 50%;
+    width: 100%;
+}
+
+.ClientCareGroup:hover {
+    box-shadow: 0px 10px 20px rgba(15, 14, 14, 0.1);
+    background-color: #edece5;
+    border: none;
+}
+
+.whatWeDid {
+    flex: 1;
+}
+
+.whatWeDid h4 {
+    font-size: 50px;
+    line-height: 1.36;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+}
+
+.whatWeDid button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f43334;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: fit-content;
+    border: none;
+}
+
+.whatWeDid button:hover {
+    background-color: #0056b3;
+}
+
+.whatWeDidText {
+    flex: 1;
+    font-size: 17px;
+    line-height: 27px;
+    margin-bottom: 35px;
+    /* padding: 15px; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.listItems {
+    list-style-type: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #0F0E0E;
+    transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.card {
+    display: flex;
+    gap: 20px;
+}
+
+.pagination {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    justify-content: space-between;
+    border: 1px solid rgba(15, 14, 14, 0.1);
+    flex-wrap: wrap;
+    gap: 20px 15px;
+    margin-bottom: 60px;
+
+}
+
+.iconWorkOne {
+    transform: rotate(-45deg);
+}
+
+.iconWorkTwo {
+    transform: rotate(45deg);
+}
+
+.btnPagignation {
+    display: flex;
+    align-items: center;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loadingScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #fe0000; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+  }
+  
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* padding: 20px; */
+        height: 20vh;
+    }
+
+    .detailContainer {
+        padding: 20px;
+        display: unset;
+    }
+
+    .portfolioDetailsContainer {
+        padding: 20px;
+    }
+
+    .portfolioDetailsText {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .portfolioDetailsText h4 {
+        font-size: 28px;
+    }
+
+    .portfolioDetailsText p {
+        padding: 0;
+        font-size: 17px;
+        text-align: justify;
+    }
+
+    .portfolioPlanning h4 {
+        font-size: 28px;
+    }
+
+    .portfolioPlanning p {
+        padding: 0;
+        font-size: 17px;
+        text-align: justify;
+    }
+
+    .portfolioHeadingText h2 {
+        font-size: 3em;
+        padding: 50px 0;
+    }
+
+    .portfolioCategoryContainer {
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px 20px;
+    }
+
+    .portfolioPlanning h4 {
+        font-size: 28px;
+    }
+
+    .ClientCare {
+        flex-direction: column;
+    }
+
+    .ClientCareGroup {
+        padding: 25px 20px;
+    }
+
+
+    .pagination {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .card {
+        flex-direction: column;
+    }
+
+
 }

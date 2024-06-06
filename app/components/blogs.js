@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from '../styles/blogs.module.css';
 import Image from 'next/image';
-import blog from '../assets/blog1.webp';
-import blog2 from '../assets/blog2.jpg';
+  import blog from '../../public/images/blogs/blog1.webp';
+  import blog2 from '../../public/images/blogs/blog2.jpg';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 
 const blogData = [

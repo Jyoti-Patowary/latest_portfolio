@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/footer.module.css';
 import { FaArrowUp, FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { IoMail } from 'react-icons/io5';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,6 +37,7 @@ const Footer = () => {
           <a href="https://twitter.com/J__Patowary" target='_blank' className={styles.aboutSocialIcon}><FaXTwitter size={25}/></a>
               <a href="https://github.com/Jyoti-Patowary" target='_blank' className={styles.aboutSocialIcon}><FaGithub size={25}/></a>
               <a href="https://www.linkedin.com/in/jyoti-p-b8a886239/" target='_blank' className={styles.aboutSocialIcon}><FaLinkedinIn size={25}/></a>
+              <a href="mailto:jpatowary8@gmail.com" target='_blank' className={styles.aboutSocialIcon}><IoMail size={25} /></a>
         </div>
 
         {/* <div className={styles.newsSection}>
@@ -56,7 +58,7 @@ const Footer = () => {
         </div>
       )}
       <div className={styles.copyrightSection}>
-          <p>Copyright © {currentYear}</p>
+          <p>Handcrafted by me © {currentYear}</p>
         </div>
     </div>
   );

@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// const poppins = Poppins({ subsets: ["latin"] });
 
 export const metadata = {
   title: "DEEP",
@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body style={{fontFamily: 'inter'}}>{children}</body>
+      <body style={{fontFamily: 'poppins'}}>{children}</body>
     </html>
   );
 }

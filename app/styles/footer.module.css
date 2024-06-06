@@ -68,6 +68,13 @@
   font-size: 20px;
 }
 
+.followSection a{
+  border: 1px solid white;
+    padding: 7px;
+    border-radius: 20%;
+    display: flex;
+}
+
 .backToTop {
   position: fixed;
   bottom: 20px;
