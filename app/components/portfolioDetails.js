@@ -7,6 +7,16 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import Link from "next/link";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react';
+
+
+function PortfolioDetailsWrapper() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <PortfolioDetails />
+      </Suspense>
+    );
+  }
 
 function PortfolioDetails() {
     const searchParams = useSearchParams();
@@ -167,4 +177,4 @@ function PortfolioDetails() {
     );
 }
 
-export default PortfolioDetails;
+export default PortfolioDetailsWrapper;
