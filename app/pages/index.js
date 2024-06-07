@@ -18,8 +18,8 @@ function Main_Page() {
       <Hero_section/>
       <About/>
       <Skills/>
-      {/* <Stacks/> */}
       <Work/>
+      {/* <Stacks/> */}
       {/* <ProcessPage/> */}
       {/* <Blogs/> */}
       {/* <Connect/> */}

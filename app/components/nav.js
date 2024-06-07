@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const menu_items = [
-  { name: 'Work', link: "/pages/portfolio-details" },
+  { name: 'Work', link: "/pages/workPage" },
   { name: 'Why Me?', link: "/pages/about" },
   // { name: 'Blogs', link: "/pages/blogs" },
 ];

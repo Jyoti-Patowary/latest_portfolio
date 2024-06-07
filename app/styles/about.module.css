@@ -238,7 +238,8 @@
   }
 
   .tech{
-    gap: 0;
+    column-gap: 10px;
+    padding: 0 20px;
   }
 
   .profileImage{

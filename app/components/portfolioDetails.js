@@ -27,7 +27,7 @@ function PortfolioDetails() {
     useEffect(() => {
         async function fetchPortfolioDetail() {
             try {
-                const res = await fetch("http://localhost:3000/api/portfolio_details");
+                const res = await fetch("/api/portfolio_details");
                 if (!res.ok) {
                     throw new Error("Failed to fetch data");
                 }
