@@ -275,4 +275,10 @@
       .popup h2{
         font-size: 18px;
       }
+
+     .chatWithUs, .socialMedia, .callMe{
+        display: flex;
+    flex-direction: column;
+    gap: 6px;
+      }
 }

@@ -76,6 +76,9 @@ function Nav() {
               </span>
             </Link>
           ))}
+           <Link href="/pages/contact">
+            <button className={styles.button}>Contact</button>
+          </Link>
         </div>
       </nav>
     </div>
