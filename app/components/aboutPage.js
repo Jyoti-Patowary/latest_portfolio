@@ -5,7 +5,7 @@ import stylesOne from "../styles/about.module.css";
 import styles from "../styles/portfolioDetails.module.css";
 import Link from "next/link";
 import Deep from "../assets/deep.jpeg";
-import Code from "../assets/career.jpg";
+import Code from "../assets/me2.jpeg";
 import { FaBootstrap, FaGithub, FaHtml5, FaReact, FaShopify, FaWordpress } from "react-icons/fa6";
 import { SiCss3, SiExpress, SiJavascript, SiMongodb, SiMui, SiMysql, SiNextdotjs, SiRemix, SiWoocommerce } from "react-icons/si";
 import { DiNodejs } from "react-icons/di";
