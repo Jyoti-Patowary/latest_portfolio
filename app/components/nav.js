@@ -43,9 +43,9 @@ function Nav() {
     <div className={`${styles.navbar} ${isNavbarFixed ? styles.fixed : ""}`}>
       <nav className={styles.nav_container}>
         <Link href="/">
-          <div className={styles.logo}>
+          <div className={styles.logo}>JP
             {/* <Image src="/logo.png" width={50} height={50} alt="logo"/> */}
-            <span className={styles.dot}>JP.</span>
+            {/* <span className={styles.dot}>P</span> */}
           </div>
         </Link>
 
