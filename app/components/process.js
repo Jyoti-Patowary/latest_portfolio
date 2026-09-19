@@ -1,90 +1,81 @@
-import Image from "next/image";
+"use client";
+
 import styles from "../styles/process.module.css";
-import disc from "../assets/design.png";
-import develop from "../assets/circuit.png";
-import user from "../assets/plan.png";
-import maint from "../assets/rocket.png";
-import line from "../assets/line.png";
 import Link from "next/link";
+import { FaCompass, FaDraftingCompass, FaLaptopCode, FaRocket } from "react-icons/fa";
+import { IoIosArrowRoundForward } from "react-icons/io";
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Discovery & Strategy",
+    desc: "Aligning on core business goals, target audience personas, technical requirements, and mapping out the optimal system architecture.",
+    icon: FaCompass,
+    iconColor: "#ff3358",
+  },
+  {
+    number: "02",
+    title: "UI/UX & Prototyping",
+    desc: "Crafting bold, intuitive interfaces with responsive wireframes and interactive component prototypes that guarantee frictionless user flows.",
+    icon: FaDraftingCompass,
+    iconColor: "#6366f1",
+  },
+  {
+    number: "03",
+    title: "Full-Stack Development",
+    desc: "Writing clean, type-safe, modular code using modern standards (Next.js 14, React, Node.js). Rigorous unit and integration testing throughout.",
+    icon: FaLaptopCode,
+    iconColor: "#06b6d4",
+  },
+  {
+    number: "04",
+    title: "Testing, Launch & Scale",
+    desc: "Speed optimization, cross-device QA, technical SEO, and deploying to global CDNs with ongoing monitoring and support.",
+    icon: FaRocket,
+    iconColor: "#10b981",
+  },
+];
 
 const ProcessPage = () => {
   return (
-    <div className={styles.mainContainer}>
+    <section id="process" className={styles.mainContainer}>
       <div className={styles.container}>
-        <h1 className={styles.title}>
-          How I Craft Websites That <span>Work</span>
-        </h1>
-        <div className={styles.processSteps}>
-          <div className={`${styles.processStep} ${styles.left}`}>
-            <div className={styles.processContainer}>
-            <h2>Discovery & Planning</h2>
-            <p>
-              We&apos;ll chat about your project goals, target audience, and any
-              specific functionalities you envision. I&apos;ll also conduct user
-              research (if needed) to understand your users&apos; needs.
-            </p>
-            </div>
-            <div className={styles.icon}>
-              <Image src={disc} alt="Discovery & Planning Icon" width={100} height={100} />
-            </div>
-          </div>
-          <Image src={line} alt="Line" width={0} height={0} sizes="100" className={styles.line} />
-          <div className={`${styles.processStep} ${styles.right}`}>
-          <div className={styles.processContainer}>
-            <h2>Design & Prototyping</h2>
-            <p>
-              Based on our discussions, I&apos;ll create mockups and wireframes
-              to visualize the website&apos;s layout and user flow. Your
-              feedback is crucial at this stage to ensure we&apos;re on the same
-              page.
-            </p>
-            </div>
-            <div className={styles.icon}>
-              <Image src={user} alt="Design & Prototyping Icon" width={100} height={100} />
-            </div>
-          </div>
-          <Image src={line} alt="Line" width={0} height={0} sizes="100" className={styles.line} />
-          <div className={`${styles.processStep} ${styles.left}`}>
-          <div className={styles.processContainer}>
-            <h2>Development & Testing</h2>
-            <p>
-              With your approval on the design, I&apos;ll bring the website to
-              life using clean code and best practices. Throughout the process,
-              rigorous testing ensures a smooth user experience across different
-              devices. We follow Agile development methodologies for efficient
-              progress.
-            </p>
-            </div>
-            <div className={styles.icon}>
-              <Image src={develop} alt="Development & Testing Icon" width={100} height={100} />
-            </div>
-          </div>
-          <Image src={line} alt="Line" width={0} height={0} sizes="100" className={styles.line} />
-          <div className={`${styles.processStep} ${styles.right}`}>
-          <div className={styles.processContainer}>
-            <h2>Launch & Maintenance</h2>
-            <p>
-              Once the website is polished, I&apos;ll launch it and provide
-              ongoing maintenance to keep it secure and up-to-date. I&apos;m
-              also happy to offer support and answer any questions you may have
-              after launch.
-            </p>
-            </div>
-            <div className={styles.icon}>
-              <Image src={maint} alt="Launch & Maintenance Icon" width={150} height={200}  />
-            </div>
-          </div>
+        <div className={styles.headerArea}>
+          <span className={styles.sectionPre}>{"// How I Work"}</span>
+          <h2 className={styles.title}>
+            Engineering Websites That <span>Perform</span>
+          </h2>
         </div>
-        {/* <Image src={line} alt="Line" width={100} height={10} className={styles.line} /> */}
-        <div className={styles.cta}>
-          <Link href="/contact" passHref>
-            <button className={styles.button}>
-              Let&apos;s Discuss Your Project
+
+        <div className={styles.stepsGrid}>
+          {processSteps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div key={index} className={styles.stepCard}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div className={styles.stepIconWrap}>
+                    <Icon size={24} style={{ color: step.iconColor }} />
+                  </div>
+                  <span className={styles.stepNumber}>{step.number}</span>
+                </div>
+
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className={styles.ctaArea}>
+          <Link href="/pages/contact">
+            <button className="btn-primary">
+              <span>Let&apos;s Discuss Your Project</span>
+              <IoIosArrowRoundForward size={22} />
             </button>
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

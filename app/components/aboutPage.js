@@ -1,180 +1,145 @@
 "use client";
 
 import Image from "next/image";
-import stylesOne from "../styles/about.module.css";
-import styles from "../styles/portfolioDetails.module.css";
-import Link from "next/link";
-import Deep from "../assets/deep.jpeg";
-import Code from "../assets/me2.jpeg";
-import { FaBootstrap, FaGithub, FaHtml5, FaReact, FaShopify, FaWordpress } from "react-icons/fa6";
-import { SiCss3, SiExpress, SiJavascript, SiMongodb, SiMui, SiMysql, SiNextdotjs, SiRemix, SiWoocommerce } from "react-icons/si";
-import { DiNodejs } from "react-icons/di";
+import styles from "../styles/about.module.css";
+import Deep from "../assets/deep.webp";
+import Code from "../assets/me2.webp";
+import { 
+  SiHtml5, 
+  SiCss3, 
+  SiJavascript, 
+  SiTypescript, 
+  SiReact, 
+  SiNextdotjs, 
+  SiRemix, 
+  SiExpress, 
+  SiNodedotjs, 
+  SiMongodb, 
+  SiMysql, 
+  SiTailwindcss, 
+  SiMui, 
+  SiShopify, 
+  SiWordpress, 
+  SiWoocommerce, 
+  SiGit 
+} from "react-icons/si";
 import Work from "../components/work";
 
+const techStack = [
+  { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
+  { name: "React", icon: SiReact, color: "#61dafb" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#68a063" },
+  { name: "Express", icon: SiExpress, color: "#ffffff" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47a248" },
+  { name: "MySQL", icon: SiMysql, color: "#4479a1" },
+  { name: "Remix", icon: SiRemix, color: "#ffffff" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38bdf8" },
+  { name: "Material-UI", icon: SiMui, color: "#007fff" },
+  { name: "Shopify & Liquid", icon: SiShopify, color: "#96bf48" },
+  { name: "WordPress", icon: SiWordpress, color: "#21759b" },
+  { name: "WooCommerce", icon: SiWoocommerce, color: "#96588a" },
+  { name: "HTML5", icon: SiHtml5, color: "#e34f26" },
+  { name: "CSS3", icon: SiCss3, color: "#1572b6" },
+  { name: "Git & GitHub", icon: SiGit, color: "#f05032" },
+];
 
 function AboutPage() {
   return (
-    <div>
-      <div className={styles.portfolioHeading}>
+    <div style={{ minHeight: "100vh" }}>
+      {/* Header Banner */}
+      <section className={styles.aboutPageHero}>
         <div className={styles.container}>
-          <div className={styles.portfolioHeadingText}>
-            <h2>About</h2>
-          </div>
+          <span className="badge" style={{ marginBottom: "16px" }}>
+            The Developer Behind the Code
+          </span>
+          <h1 className={styles.pageTitle}>
+            Engineering with <span className="glow-text">Empathy & Precision</span>
+          </h1>
+          <p className={styles.pageSubtitle}>
+            A self-taught full-stack developer turning abstract concepts into high-performing, interactive digital realities.
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className={stylesOne.containerTwo}>
-        <div className={stylesOne.about_container}>
-          <div className={stylesOne.imageSection}>
-            <Image
-              src={Deep}
-              alt="Your Alt Text"
-              className={stylesOne.image}
-              width="auto"
-              height="368px"
-            />
-          </div>
-          <div className={stylesOne.aboutTextContainer}>
-            <div className={stylesOne.subContainer}>
-              <h1 className={stylesOne.aboutTitle}>
-                The Techie with a <span>Creative Twist</span>
-              </h1>
-              <p className={stylesOne.aboutText}>
-                Hi there! I&apos;m Jyoti Patowary, a web developer with a
-                fervent passion for crafting beautiful and functional online
-                experiences. While I spend my weekdays bringing websites to life
-                in a professional setting, my love for this craft spills over
-                into my freelance work.
+      {/* Story Chapter 1 */}
+      <section className={styles.storySection}>
+        <div className={styles.container}>
+          <div className={styles.storyCard}>
+            <div className={styles.storyContent}>
+              <span className={styles.sectionPre}>{"// Chapter 01"}</span>
+              <h2>The Techie with a <span>Creative Twist</span></h2>
+              <p>
+                Hi there! I&apos;m Jyoti Patowary. I build web applications where clean code meets modern aesthetics. While I enjoy solving complex architectural challenges in production environments, I frequently collaborate with clients and startups on bespoke freelance projects.
               </p>
-              <p className={stylesOne.aboutText}>
-                For me, web development isn&apos;t just about writing code.
-                It&apos;s about taking ideas and transforming them into
-                something interactive and engaging for users. I find immense
-                satisfaction in seeing my creations come to life and knowing
-                they&apos;ll make a positive impact on how people navigate the
-                web.
+              <p>
+                For me, web engineering is never just about typing syntax. It is about distilling ambitious ideas into digital experiences that are intuitive, fast, and enjoyable for users while delivering tangible results for businesses.
               </p>
             </div>
-          </div>
-        </div>
-        <div className={stylesOne.about_container}>
-          <div className={stylesOne.aboutTextContainer}>
-            <div className={stylesOne.subContainer}>
-              <h1 className={stylesOne.aboutTitle}>
-                From Hospitality to Code: <span>My Unexpected Journey</span>
-              </h1>
-              <p className={stylesOne.aboutText}>
-                They say life is a journey, and mine has certainly taken some
-                unexpected turns! While my background might seem far removed
-                from technology - I used to be a hotelier! - a hidden passion
-                for creating and problem-solving led me down a path I never
-                anticipated: web development.
-              </p>
-              <p className={stylesOne.aboutText}>
-                Becoming a self-taught developer wasn&apos;t easy. Countless
-                hours were spent learning new skills, facing challenges head-on,
-                and constantly pushing myself to achieve my goals. But with
-                every line of code I wrote, a sense of accomplishment grew.
-                Transforming ideas into digital experiences fueled my passion,
-                and the satisfaction of seeing my creations come to life is
-                truly rewarding.
-              </p>
-            </div>
-            <div className={stylesOne.imageSection}>
+            <div className={styles.storyImageWrapper}>
               <Image
-                src={Code}
-                alt="Your Alt Text"
-                className={stylesOne.imageOne}
-                width="auto"
-                height="auto"
+                src={Deep}
+                alt="Jyoti Patowary"
+                className={styles.storyImg}
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className={stylesOne.passion}>
-        <div className={stylesOne.containerTwo}>
-          <div className={stylesOne.passion_container}>
-          <h1 className={stylesOne.aboutTitle}>
-            My Passion for <span>Development</span>
-          </h1>
-          <p className={stylesOne.aboutText}>
-            Web development allows me to take abstract ideas and turn them into
-            tangible, interactive experiences. There&apos;s a magic in seeing a
-            website come together, from the initial planning stages to the final
-            launch. I find myself constantly intrigued by the ever-evolving
-            nature of this field, with new technologies and frameworks emerging
-            all the time.
-          </p>
-          </div>
-        </div>
-      </div>
-      <div className={stylesOne.containerTwo}>
-      <h1 className={stylesOne.aboutTitle}>
-         My Tech Stack: <span>Tools of the Trade</span>
-          </h1>
-          <div className={stylesOne.tech}>
-          <div className={stylesOne.tools}>
-            <FaHtml5 size={60}/>
+          {/* Story Chapter 2 */}
+          <div className={`${styles.storyCard} ${styles.storyCardReverse}`}>
+            <div className={styles.storyImageWrapper}>
+              <Image
+                src={Code}
+                alt="Coding Setup"
+                className={styles.storyImg}
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
             </div>
-            <div className={stylesOne.tools}>
-            <SiCss3 size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiJavascript size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <FaReact size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiNextdotjs size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiRemix size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiExpress size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <DiNodejs size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiMongodb size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiMysql size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <FaBootstrap size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiMui size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <FaShopify size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <FaWordpress size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <SiWoocommerce size={60}/>
-            </div>
-            <div className={stylesOne.tools}>
-            <FaGithub size={60}/>
+            <div className={styles.storyContent}>
+              <span className={styles.sectionPre}>{"// Chapter 02"}</span>
+              <h2>From Hospitality to Code: <span>My Journey</span></h2>
+              <p>
+                Life rarely moves in a straight line. Before entering software engineering, I spent years working in hospitality management as a hotelier. That experience proved to be my secret weapon: it taught me deep human empathy, composure under high pressure, and the art of anticipating user needs.
+              </p>
+              <p>
+                When I committed to becoming a self-taught software developer, I brought that same work ethic with me. Countless hours dedicated to deep-dive tutorials, documentation, and building real-world projects forged my technical foundation. Transforming ideas into working software remains one of the most rewarding pursuits in my life.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* <div className={stylesOne.containerTwo}>
-      <h1 className={stylesOne.aboutTitle}>
-      A Look at My <span>Projects</span>
-          </h1>
-          </div> */}
+      {/* Tech Stack Matrix */}
+      <section className={styles.techSection}>
+        <div className={styles.container}>
+          <div className={styles.techTitleArea}>
+            <span className={styles.sectionPre}>{"// Core Competencies"}</span>
+            <h2 className={styles.techTitle}>
+              My Tech Stack: <span>Tools of the Trade</span>
+            </h2>
+          </div>
 
-          <Work/>
+          <div className={styles.techGrid}>
+            {techStack.map((tech, idx) => {
+              const Icon = tech.icon;
+              return (
+                <div key={idx} className={styles.techCard}>
+                  <Icon size={44} style={{ color: tech.color }} />
+                  <span className={styles.techName}>{tech.name}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Showcase */}
+      <Work />
     </div>
-
   );
 }
 

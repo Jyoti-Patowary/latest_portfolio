@@ -1,0 +1,50 @@
+/* =========================================
+   TOP ROUTE PROGRESS LOADER (NON-BLOCKING)
+========================================= */
+
+.topLoaderBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff3358 0%, #ff6b81 40%, #6366f1 80%, #06b6d4 100%);
+  box-shadow: 0 0 14px rgba(255, 51, 88, 0.9), 0 0 8px rgba(99, 102, 241, 0.7);
+  z-index: 999999;
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}
+
+.topLoaderSpinner {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid rgba(255, 51, 88, 0.15);
+  border-top-color: #ff3358;
+  border-right-color: #6366f1;
+  border-radius: 50%;
+  z-index: 999999;
+  animation: spinLoader 0.6s linear infinite;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(255, 51, 88, 0.4);
+}
+
+@keyframes spinLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .topLoaderSpinner {
+    top: 14px;
+    right: 14px;
+    width: 18px;
+    height: 18px;
+  }
+}

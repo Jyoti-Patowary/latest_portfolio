@@ -1,44 +1,116 @@
-import React from 'react';
-import styles from '../styles/about.module.css';
+"use client";
+
+import React from "react";
+import styles from "../styles/about.module.css";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
-import Link from 'next/link';
-import Image from 'next/image';
-import Deep from '../assets/deep.jpeg';
+import Link from "next/link";
+import Image from "next/image";
+import Deep from "../assets/deep.webp";
 
 function About() {
   return (
-    <div>
-      <section id={styles.about} className={styles.aboutSection}>
-        <div className={styles.container}>
-          <div className={styles.aboutContent}>
-            <div className={styles.imageContainer}>
-              <Image src={Deep} alt="Your Alt Text" className={styles.profileImage} width="auto" height="auto" />
-            </div>
-            <div className={styles.textContainer}>
-              <div className={styles.aboutHeading}>
-              <h1 className={styles.aboutTitle}>Jyoti Patowary</h1>
-              <h4 className={styles.aboutSubTitle}>Web Developer | Freelancer</h4>
-              </div>
-              <Link className={styles.ctaButton} href="/pages/about" >Know more</Link>
-              <p className={styles.aboutText}>
-              By day, I&apos;m a web developer, but my passion for crafting websites extends beyond the traditional office. I also freelance, which allows me to work on exciting new projects and collaborate with a variety of clients.
-              </p>
-              <div className={styles.aboutMe}>
-               
-                <div className={styles.aboutSocial}>
-                  <a href="mailto:jpatowary8@gmail.com" target='_blank' className={styles.aboutSocialIcon}><IoMail size={25} /></a>
-                  <a href="https://github.com/Jyoti-Patowary" target='_blank' className={styles.aboutSocialIcon}><FaGithub size={25} /></a>
-                  <a href="https://www.linkedin.com/in/jyoti-p-b8a886239/" target='_blank' className={styles.aboutSocialIcon}><FaLinkedinIn size={25} /></a>
-                  <a href="https://twitter.com/J__Patowary" target='_blank' className={styles.aboutSocialIcon}><FaXTwitter size={25} /></a>
-
+    <section id="about" className={styles.aboutSection}>
+      <div className={styles.container}>
+        <div className={styles.aboutGrid}>
+          {/* Left Column: Portrait with Floating Badge */}
+          <div className={styles.imageCol}>
+            <div className={styles.imageFrame}>
+              <Image
+                src={Deep}
+                alt="Jyoti Patowary"
+                className={styles.aboutProfileImg}
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 420px"
+              />
+              <div className={styles.floatingExperienceBadge}>
+                <span className={styles.expNumber}>3+</span>
+                <div className={styles.expText}>
+                  <strong>Years Building for the Web</strong>
+                  <span>From Hospitality to Full-Stack Engineering</span>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Right Column: Bio & Core Pillars */}
+          <div className={styles.textCol}>
+            <span className={styles.sectionPre}>{"// Who I Am"}</span>
+            <h2 className={styles.sectionTitle}>
+              From Hospitality to Code: <br />
+              <span>Crafting Digital Products with Purpose</span>
+            </h2>
+
+            <p className={styles.narrativeText}>
+              My path to engineering is unique — I transitioned from a career in <strong>hospitality management</strong> into self-taught <strong>web development</strong>. Managing fast-paced hotel environments instilled an instinct for client empathy, proactive problem-solving, and ruthless attention to detail.
+            </p>
+
+            <p className={styles.narrativeText}>
+              Today, I channel that exact mindset into building clean, scalable web architectures. Whether freelancing for growing brands or collaborating with engineering teams, I prioritize fast load times, accessible interfaces, and intuitive user experiences.
+            </p>
+
+            {/* Core Pillars */}
+            <div className={styles.pillarGrid}>
+              <div className={styles.pillarCard}>
+                <h4>Client & User Empathy</h4>
+                <p>Rooted in hospitality — understanding human needs before writing a single line of code.</p>
+              </div>
+
+              <div className={styles.pillarCard}>
+                <h4>Modern Web Standards</h4>
+                <p>Next.js 14 App Router, React Server Components, TypeScript, and clean modular CSS.</p>
+              </div>
+            </div>
+
+            {/* Actions & Socials */}
+            <div className={styles.actionRow}>
+              <Link href="/pages/about">
+                <button className="btn-primary" style={{ padding: "12px 26px" }}>
+                  Read My Full Story &rarr;
+                </button>
+              </Link>
+
+              <div className={styles.socialIcons}>
+                <a
+                  href="https://github.com/Jyoti-Patowary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBtn}
+                  aria-label="GitHub"
+                >
+                  <FaGithub size={18} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/jyoti-p-b8a886239/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBtn}
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedinIn size={18} />
+                </a>
+                <a
+                  href="https://twitter.com/J__Patowary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBtn}
+                  aria-label="Twitter"
+                >
+                  <FaXTwitter size={18} />
+                </a>
+                <a
+                  href="mailto:jpatowary8@gmail.com"
+                  className={styles.socialBtn}
+                  aria-label="Email"
+                >
+                  <IoMail size={18} />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

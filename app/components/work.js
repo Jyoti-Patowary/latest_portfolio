@@ -5,92 +5,136 @@ import { usePathname } from "next/navigation";
 import styles from "../styles/work.module.css";
 import Image from "next/image";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { FiExternalLink } from "react-icons/fi";
 import Link from "next/link";
-import stylesTwo from "../styles/portfolioDetails.module.css";
+import { fallbackProjects } from "../data/portfolioData";
 
 function Work() {
-  const [portfolioData, setPortfolioData] = useState(null);
+  const [portfolioData, setPortfolioData] = useState(fallbackProjects);
   const pathname = usePathname();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch("/api/portfolio_details");
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.result) && data.result.length > 0) {
+            setPortfolioData(data.result);
+          }
         }
-        const data = await res.json();
-        console.log(data);
-        setPortfolioData(data.result.slice(0, 4));
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.warn("Using fallback projects data:", error);
       }
     }
     fetchData();
   }, []);
 
   const isWorkPage = pathname === "/pages/workPage";
+  const displayedProjects = isWorkPage ? portfolioData : portfolioData.slice(0, 4);
 
   return (
     <div>
+      {/* Header if on dedicated Work Page */}
       {isWorkPage && (
-        <div className={stylesTwo.portfolioHeading}>
-          <div className={stylesTwo.container}>
-            <div className={stylesTwo.portfolioHeadingText}>
-              <h2>Works</h2>
-            </div>
+        <div className={styles.workPageHeader}>
+          <div className={styles.container}>
+            <span className="badge" style={{ marginBottom: "16px" }}>
+              Case Studies & Deliverables
+            </span>
+            <h1 className={styles.pageTitle}>
+              Selected <span className="glow-text">Works</span>
+            </h1>
+            <p className={styles.pageSubtitle}>
+              A curated selection of client platforms, e-commerce storefronts, and full-stack web applications.
+            </p>
           </div>
         </div>
       )}
-      <section id={styles.works} className={styles.worksSection}>
+
+      {/* Main Works Section */}
+      <section id="works" className={styles.worksSection}>
         <div className={styles.container}>
           {!isWorkPage && (
-            <div className={styles.worksTitle}>
-              <h1 className={styles.aboutTitle}>
-                A Look at My <span>Works</span>
-              </h1>
+            <div className={styles.worksTitleArea}>
+              <span className={styles.sectionPre}>{"// Portfolio"}</span>
+              <h2 className={styles.worksHeading}>
+                Featured <span>Case Studies</span>
+              </h2>
             </div>
           )}
-          <div className={styles.workContainer}>
-            {Array.isArray(portfolioData) &&
-              portfolioData.map((item) => (
-                <div key={item._id} className={styles.workCard}>
-                  <div className={styles.workImage}>
+
+          <div className={styles.projectsGrid}>
+            {displayedProjects.map((item) => {
+              const imageSrc = (item.final_img && item.final_img[0]) || item.site_image || "/troyagency.png";
+              const category = item.category || (item.estimate && item.estimate[0]?.category) || "Web Development";
+              const tags = item.tags || ["Next.js", "React", "Node.js", "Responsive"];
+
+              return (
+                <div key={item._id} className={styles.projectCard}>
+                  <div className={styles.imageWrapper}>
+                    <span className={styles.categoryBadge}>{category}</span>
                     <Image
-                      src={item.final_img[0]}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      className={styles.image}
-                      alt={item.site_name}
+                      src={imageSrc}
+                      width={600}
+                      height={340}
+                      className={styles.projectImage}
+                      alt={item.site_name || item.title}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     />
                   </div>
-                  <div className={styles.cardDetails}>
-                    <h4>{item.title}</h4>
-                    {/* <p>{item.description}</p> */}
-                    <Link
-                      href={{
-                        pathname: "/pages/portfolio-details",
-                        query: { id: item._id },
-                      }}
-                    >
-                      <div className={styles.btn}>
-                        <span className={styles.btn_text}>View Details</span>
-                        <span className={styles.iconWork}>
-                          <IoIosArrowRoundForward
-                            size={25}
-                            className={styles.icon}
-                          />
-                        </span>
+
+                  <div className={styles.cardContent}>
+                    <div className={styles.cardTop}>
+                      <h3 className={styles.projectTitle}>{item.title}</h3>
+                      <p className={styles.projectIntro}>
+                        {item.site_intro || "Engineered with precision for optimal user experience, fast load speeds, and business growth."}
+                      </p>
+
+                      <div className={styles.tagsRow}>
+                        {tags.map((tag, tIdx) => (
+                          <span key={tIdx} className={styles.tagPill}>
+                            {tag}
+                          </span>
+                        ))}
                       </div>
-                    </Link>
+                    </div>
+
+                    <div className={styles.cardFooter}>
+                      <div className={styles.disabledDetailsBtn} title="Case study coming soon">
+                        <span className={styles.comingSoonDot}></span>
+                        <span>Case Study Coming Soon</span>
+                      </div>
+
+                      {item.site_link && (
+                        <a
+                          href={item.site_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.externalLink}
+                          aria-label={`Visit ${item.site_name} live site`}
+                        >
+                          <FiExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              ))}
-            <Link className={styles.ctaButton} href="/pages/workPage">
-              Explore My Work
-            </Link>
+              );
+            })}
           </div>
+
+          {!isWorkPage && (
+            <div className={styles.ctaArea}>
+              <Link href="/pages/workPage">
+                <button className="btn-secondary" style={{ padding: "14px 32px" }}>
+                  <span>Explore All Projects</span>
+                  <IoIosArrowRoundForward size={22} />
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
     </div>

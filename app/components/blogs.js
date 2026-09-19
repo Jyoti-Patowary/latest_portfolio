@@ -1,79 +1,80 @@
-import React from 'react';
-import styles from '../styles/blogs.module.css';
-import Image from 'next/image';
-  import blog from '../../public/images/blogs/blog1.webp';
-  import blog2 from '../../public/images/blogs/blog2.jpg';
-import { IoIosArrowRoundForward } from 'react-icons/io';
+import React from "react";
+import styles from "../styles/blogs.module.css";
+import Image from "next/image";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import Link from "next/link";
+import { fallbackBlogs } from "../data/portfolioData";
 
-const blogData = [
-  {
-    tag: 'Version Control',
-    title: 'A Step-by-Step Guide to Pushing Your Existing Code to Git',
-    image: blog,
-    link: 'https://medium.com/@jpatowary8/a-step-by-step-guide-to-pushing-your-existing-code-to-git-40278290a38d',
-  },
-  {
-    tag: 'AI vs Human',
-    title: 'AI and Coding: A Future of Collaboration, Not Competition — Navigating the Landscape with Recent Developments',
-    image: blog2,
-    link: 'https://medium.com/@jpatowary8/ai-and-coding-a-future-of-collaboration-not-competition-navigating-the-landscape-with-recent-53c9d28ca6b7'
-  },
-];
-
-function truncateTitle(title) {
-  const words = title.split(' ');
-  if (words.length > 12) {
-    return words.slice(0, 12).join(' ') + '...';
-  }
-  return title;
-}
-
-async function Blogs() {
-  const url = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@jpatowary8";
-  const data = await getData();
-  // console.log(data);
-
-  async function getData() {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  }
+function Blogs() {
+  const blogItems = fallbackBlogs.slice(0, 2);
 
   return (
-    <div>
-      <section className={styles.blogSection}>
-        <div className={styles.container}>
-          <div className={styles.blogTitle}>
-            <h1>Blogs</h1>
-          </div>
-          <div className={styles.blogContainer}>
-            {blogData.map((blog, index) => (
-              <div key={index} className={styles.blogCards}>
-                <Image
-                  src={blog.image}
-                  sizes="100vw"
-                  style={{ width: '100%', height: '400px', borderRadius: '10px' }}
-                  alt={`Blog Image - ${index + 1}`}
-                  className={styles.blogCardsImage}
-                />
-                <div className={styles.blogCardDetails}>
-                  <h4>{blog.tag}</h4>
-                  <h3>{truncateTitle(blog.title)}</h3>
-                  <div className={styles.btn}>
-                    <a href={blog.link} className={styles.btn_text} target="_blank" rel="noopener noreferrer">
-                      Read More
-                    </a>
-                    <span className={styles.iconBlogs}>
-                      <IoIosArrowRoundForward size={25} color='#5D636A'/>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <section id="blogs" className={styles.blogSection}>
+      <div className={styles.container}>
+        <div className={styles.headerArea}>
+          <span className={styles.sectionPre}>{"// Thoughts & Engineering"}</span>
+          <h2 className={styles.title}>
+            Latest <span>Insights</span>
+          </h2>
         </div>
-      </section>
-    </div>
+
+        <div className={styles.blogsGrid}>
+          {blogItems.map((blog, index) => (
+            <article key={blog._id || index} className={styles.blogCard}>
+              <div className={styles.imageWrapper}>
+                <span className={styles.tagBadge}>{blog.tag || "Engineering"}</span>
+                <Image
+                  src={`/images/blogs/${blog.image}`}
+                  width={600}
+                  height={320}
+                  alt={blog.title}
+                  className={styles.blogImage}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                />
+              </div>
+
+              <div className={styles.cardContent}>
+                <div>
+                  <div className={styles.metaRow}>
+                    <span>{blog.date || "2024"}</span>
+                    <span>•</span>
+                    <span>{blog.readTime || "5 min read"}</span>
+                  </div>
+
+                  <h3 className={styles.articleTitle}>
+                    <a href={blog.link} target="_blank" rel="noopener noreferrer">
+                      {blog.title}
+                    </a>
+                  </h3>
+
+                  <p className={styles.articleSummary}>{blog.summary}</p>
+                </div>
+
+                <a
+                  href={blog.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.readMoreLink}
+                >
+                  <span>Read on Medium</span>
+                  <IoIosArrowRoundForward size={22} />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.ctaArea}>
+          <Link href="/pages/blogs">
+            <button className="btn-secondary">
+              <span>View All Publications</span>
+              <IoIosArrowRoundForward size={22} />
+            </button>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 

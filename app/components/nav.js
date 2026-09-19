@@ -1,87 +1,157 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import styles from "../styles/nav.module.css";
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
-const menu_items = [
-  { name: 'Work', link: "/pages/workPage" },
-  { name: 'Why Me?', link: "/pages/about" },
-  // { name: 'Blogs', link: "/pages/blogs" },
+const menuItems = [
+  { name: "Home", link: "/" },
+  { name: "Projects", link: "/pages/workPage" },
+  { name: "About", link: "/pages/about" },
+  { name: "Insights", link: "/pages/blogs" },
+  { name: "Contact", link: "/pages/contact" },
 ];
 
 function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isNavbarFixed, setIsNavbarFixed] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsNavbarFixed(true);
+      if (window.scrollY > 30) {
+        setIsScrolled(true);
       } else {
-        setIsNavbarFixed(false);
+        setIsScrolled(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMobileMenuOpen]);
+
   return (
-    <div className={`${styles.navbar} ${isNavbarFixed ? styles.fixed : ""}`}>
-      <nav className={styles.nav_container}>
-        <Link href="/">
-          <div className={styles.logo}>JP
-            {/* <Image src="/logo.png" width={50} height={50} alt="logo"/> */}
-            {/* <span className={styles.dot}>P</span> */}
-          </div>
+    <header className={`${styles.navbarWrapper} ${isScrolled ? styles.scrolled : ""}`}>
+      <div className={styles.navbar}>
+        <div className={styles.logoArea}>
+          <Link href="/" className={styles.logo}>
+            <span>JYOTI</span>
+            <span className={styles.logoDot}>.</span>
+          </Link>
+          <span className={`badge-status ${styles.navBadge}`}>
+            <span className={styles.badgeTextFull}>Available for hire</span>
+            <span className={styles.badgeTextShort}>Available</span>
+          </span>
+        </div>
+
+        {/* Desktop Links */}
+        <nav className={styles.navlinks}>
+          {menuItems.slice(0, 4).map((item, index) => {
+            const isActive = pathname === item.link;
+            return (
+              <Link
+                key={index}
+                href={item.link}
+                className={styles.navLink}
+                style={isActive ? { color: "#ffffff", fontWeight: 700 } : {}}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Right CTA */}
+        <div className={styles.rightGroup}>
+          <Link href="/pages/contact">
+            <button className={styles.ctaBtn}>
+              <span>Let&apos;s Talk</span>
+              <span style={{ fontSize: "14px" }}>&rarr;</span>
+            </button>
+          </Link>
+
+          {/* Mobile Menu Hamburger */}
+          <button
+            className={styles.mobileMenuIcon}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            <span className={`${styles.burgerLine} ${isMobileMenuOpen ? styles.burgerLineOpenTop : ""}`}></span>
+            <span className={`${styles.burgerLine} ${isMobileMenuOpen ? styles.burgerLineOpenMid : ""}`}></span>
+            <span className={`${styles.burgerLine} ${isMobileMenuOpen ? styles.burgerLineOpenBot : ""}`}></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      <div className={`${styles.mobileDrawer} ${isMobileMenuOpen ? styles.mobileDrawerOpen : ""}`}>
+        {menuItems.map((item, index) => (
+          <Link
+            key={index}
+            href={item.link}
+            className={styles.mobileNavLink}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {item.name}
+          </Link>
+        ))}
+
+        <Link href="/pages/contact" onClick={() => setIsMobileMenuOpen(false)}>
+          <button className={`${styles.ctaBtn} ${styles.mobileCta}`}>
+            Let&apos;s Build Together &rarr;
+          </button>
         </Link>
 
-        {/* Desktop View */}
-        <div className={styles.navlinks}>
-          {menu_items.map((item, index) => (
-            <Link key={index} href={item.link} className={styles.link}>
-              {item.name}
-            </Link>
-          ))}
-          <Link href="/pages/contact">
-            <button className={styles.button}>Contact</button>
-          </Link>
+        <div className={styles.mobileSocials}>
+          <a
+            href="https://github.com/Jyoti-Patowary"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialIconBtn}
+            aria-label="GitHub"
+          >
+            <FaGithub size={20} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jyoti-p-b8a886239/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialIconBtn}
+            aria-label="LinkedIn"
+          >
+            <FaLinkedinIn size={20} />
+          </a>
+          <a
+            href="https://twitter.com/J__Patowary"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.socialIconBtn}
+            aria-label="Twitter"
+          >
+            <FaXTwitter size={20} />
+          </a>
+          <a
+            href="mailto:jpatowary8@gmail.com"
+            className={styles.socialIconBtn}
+            aria-label="Email"
+          >
+            <IoMail size={20} />
+          </a>
         </div>
-
-        {/* Mobile View */}
-        <div className={styles.mobileMenuIcon} onClick={toggleMobileMenu}>
-          ☰
-        </div>
-        <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ""}`}>
-          <div className={styles.closeButton} onClick={closeMobileMenu}>
-            &times;
-          </div>
-          {menu_items.map((item, index) => (
-            <Link key={index} href={item.link}>
-              <span className={styles.link} onClick={closeMobileMenu}>
-                {item.name}
-              </span>
-            </Link>
-          ))}
-           <Link href="/pages/contact">
-            <button className={styles.button}>Contact</button>
-          </Link>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </header>
   );
 }
 

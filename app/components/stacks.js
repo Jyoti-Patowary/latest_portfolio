@@ -1,98 +1,69 @@
-'use client'
-import { useEffect, useRef } from 'react';
-import { IoLogoCss3, IoLogoJavascript } from 'react-icons/io';
-import styles from '../styles/stacks.module.css';
-import { SiExpress, SiHtml5, SiMongodb, SiReact } from 'react-icons/si';
-import { TbBrandNextjs } from 'react-icons/tb';
-import { FaNodeJs, FaShopify, FaWordpress } from 'react-icons/fa6';
+"use client";
+
+import styles from "../styles/stacks.module.css";
+import { 
+  SiReact, 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiJavascript, 
+  SiNodedotjs, 
+  SiExpress, 
+  SiMongodb, 
+  SiTailwindcss, 
+  SiShopify, 
+  SiWordpress, 
+  SiGit,
+  SiHtml5,
+  SiCss3
+} from "react-icons/si";
+
+const techList = [
+  { name: "Next.js 14", icon: SiNextdotjs },
+  { name: "React", icon: SiReact },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Express.js", icon: SiExpress },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "Tailwind CSS", icon: SiTailwindcss },
+  { name: "Shopify / Liquid", icon: SiShopify },
+  { name: "WordPress / WooCommerce", icon: SiWordpress },
+  { name: "Git & GitHub", icon: SiGit },
+  { name: "HTML5 & CSS3", icon: SiHtml5 },
+];
 
 export const Stacks = () => {
-    const containerRef = useRef();
-
-    useEffect(() => {
-        const container = containerRef.current;
-
-        const handleAnimationEnd = () => {
-            // Reset the transform property to restart the animation
-            container.style.transform = 'translateX(0)';
-        };
-
-        container.addEventListener('animationiteration', handleAnimationEnd);
-
-        return () => {
-            container.removeEventListener('animationiteration', handleAnimationEnd);
-        };
-    }, []);
-
-    return (
-        <div className={styles.stacksContainer}>
-            <div className={styles.container}>
-                <div ref={containerRef} className={styles.stackContainer}>
-                    {/* First set of slides */}
-                    <div className={styles.slide}>
-                        <SiHtml5 size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <IoLogoCss3 size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <IoLogoJavascript size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <SiReact size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <TbBrandNextjs size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <SiMongodb size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <FaNodeJs size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <SiExpress size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <FaShopify size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <FaWordpress size={60} className={styles.StacksLogo} />
-                    </div>
-
-                    {/* Second set of slides (duplicates the first set) */}
-                    <div className={styles.slide}>
-                        <SiHtml5 size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <IoLogoCss3 size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <IoLogoJavascript size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <SiReact size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <TbBrandNextjs size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <SiMongodb size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <FaNodeJs size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <SiExpress size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <FaShopify size={60} className={styles.StacksLogo} />
-                    </div>
-                    <div className={styles.slide}>
-                        <FaWordpress size={60} className={styles.StacksLogo} />
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className={styles.stacksWrapper}>
+      <div className={styles.marqueeTrack}>
+        {/* First repetition */}
+        <div className={styles.marqueeGroup}>
+          {techList.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={idx} className={styles.techPill}>
+                <Icon size={18} className={styles.techIcon} />
+                <span>{item.name}</span>
+              </div>
+            );
+          })}
         </div>
-    );
+
+        {/* Second repetition for smooth infinite marquee */}
+        <div className={styles.marqueeGroup}>
+          {techList.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={`dup-${idx}`} className={styles.techPill}>
+                <Icon size={18} className={styles.techIcon} />
+                <span>{item.name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 };
+
+export default Stacks;
