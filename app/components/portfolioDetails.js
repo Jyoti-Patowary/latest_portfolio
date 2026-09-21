@@ -19,6 +19,55 @@ import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { fallbackProjects } from "../data/portfolioData";
 
+// Helper to extract the tech stack dynamically from MongoDB database
+function getTechStack(project) {
+  if (!project) return [];
+
+  // 1. Direct tech stack or tags field from MongoDB
+  const rawStack =
+    project.tech_stack ||
+    project.techStack ||
+    project.technologies ||
+    project.technology ||
+    project.tags ||
+    project.stack ||
+    project.tools;
+
+  if (Array.isArray(rawStack) && rawStack.length > 0) {
+    return rawStack
+      .map((item) => {
+        if (typeof item === "string") return item.trim();
+        if (item && typeof item === "object") {
+          return item.name || item.title || item.label || item.tech || "";
+        }
+        return String(item);
+      })
+      .filter(Boolean);
+  }
+
+  // 2. Comma-separated string in database
+  if (typeof rawStack === "string" && rawStack.trim().length > 0) {
+    return rawStack
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  // 3. Fallback: Parse categories from estimate in database
+  const category =
+    project.category ||
+    (project.estimate && project.estimate[0]?.category);
+
+  if (category && typeof category === "string" && category.trim().length > 0) {
+    return category
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
 function PortfolioDetailsContent() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -100,10 +149,7 @@ function PortfolioDetailsContent() {
   const timelineDisplay =
     rawDate && rawEst ? `${rawDate} (${rawEst})` : rawDate || rawEst || "Production Deployed";
 
-  const tags =
-    currentProject.tags && currentProject.tags.length > 0
-      ? currentProject.tags
-      : ["WordPress", "PHP", "Custom Architecture", "RMA Workflow", "Admin Dashboard"];
+  const tags = getTechStack(currentProject);
 
   const hasLiveLink = Boolean(currentProject.site_link && currentProject.site_link.trim().length > 0);
   const hasGithubLink = Boolean(currentProject.github_link && currentProject.github_link.trim().length > 0);
@@ -265,11 +311,15 @@ function PortfolioDetailsContent() {
           <div className={styles.specItem}>
             <span className={styles.specLabel}>Core Technologies</span>
             <div className={styles.techTagsRow}>
-              {tags.map((t, idx) => (
-                <span key={idx} className={styles.techPill}>
-                  {t}
-                </span>
-              ))}
+              {tags && tags.length > 0 ? (
+                tags.map((t, idx) => (
+                  <span key={idx} className={styles.techPill}>
+                    {t}
+                  </span>
+                ))
+              ) : (
+                <span className={styles.techPill}>Full-Stack Architecture</span>
+              )}
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ export const fallbackProjects = [
     github_link: "",
     category: "Custom WordPress Development",
     tags: ["WordPress", "PHP", "Custom Plugin", "RMA Workflow", "Admin Dashboard", "MySQL"],
+    tech_stack: ["WordPress", "PHP", "Custom Plugins", "RMA Workflow", "Admin Dashboard", "MySQL"],
     colors: ["#1e293b", "#3b82f6", "#10b981", "#ffffff"],
     estimate: [
       {
@@ -69,6 +70,7 @@ export const fallbackProjects = [
     github_link: "https://github.com/Jyoti-Patowary",
     category: "Full Stack & Next.js",
     tags: ["Next.js 14", "React", "Tailwind CSS", "Node.js", "UI/UX Systems", "Vercel"],
+    tech_stack: ["Next.js 14", "React", "Tailwind CSS", "Node.js", "UI/UX Systems", "Vercel"],
     colors: ["#0f172a", "#38bdf8", "#6366f1", "#ffffff"],
     estimate: [
       {
@@ -138,6 +140,7 @@ export const fallbackProjects = [
     github_link: "https://github.com/Jyoti-Patowary",
     category: "E-Commerce & Shopify",
     tags: ["Shopify", "React", "Liquid", "Next.js", "Tailwind CSS", "Stripe"],
+    tech_stack: ["Shopify", "React", "Liquid", "Next.js", "Tailwind CSS", "Stripe"],
     colors: ["#1e293b", "#f43f5e", "#fb7185", "#f8fafc"],
     estimate: [
       {
@@ -206,6 +209,7 @@ export const fallbackProjects = [
     github_link: "https://github.com/Jyoti-Patowary",
     category: "Web Application & EdTech",
     tags: ["React", "Node.js", "MongoDB", "Express", "REST API", "JWT Auth"],
+    tech_stack: ["React", "Node.js", "MongoDB", "Express", "REST API", "JWT Auth"],
     colors: ["#090d16", "#10b981", "#6366f1", "#f1f5f9"],
     estimate: [
       {
@@ -274,6 +278,7 @@ export const fallbackProjects = [
     github_link: "https://github.com/Jyoti-Patowary",
     category: "Creative Portfolio & Booking",
     tags: ["Next.js", "React", "CSS Modules", "Email API", "Responsive"],
+    tech_stack: ["Next.js", "React", "CSS Modules", "Email API", "Responsive"],
     colors: ["#050505", "#e11d48", "#a8a29e", "#ffffff"],
     estimate: [
       {

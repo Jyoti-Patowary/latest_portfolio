@@ -68,7 +68,10 @@ function Work() {
             {displayedProjects.map((item) => {
               const imageSrc = (item.final_img && item.final_img[0]) || item.site_image || "/troyagency.png";
               const category = item.category || (item.estimate && item.estimate[0]?.category) || "Web Development";
-              const tags = item.tags || ["Next.js", "React", "Node.js", "Responsive"];
+              const tags =
+                (Array.isArray(item.tech_stack) && item.tech_stack.length > 0
+                  ? item.tech_stack
+                  : item.tags) || ["Next.js", "React", "Node.js", "Responsive"];
 
               return (
                 <div key={item._id} className={styles.projectCard}>
