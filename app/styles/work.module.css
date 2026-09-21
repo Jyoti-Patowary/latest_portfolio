@@ -78,7 +78,17 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.projectCard:hover .projectImage {
+.projectImageContain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+  background: #090a0f;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard:hover .projectImage,
+.projectCard:hover .projectImageContain {
   transform: scale(1.05);
 }
 

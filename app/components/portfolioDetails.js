@@ -68,6 +68,93 @@ function getTechStack(project) {
   return [];
 }
 
+// Helper to check if a project or screen represents a mobile app mockup
+function isMobileProject(project, imageSrc = "") {
+  if (!project) return false;
+  const cat = (project.category || (project.estimate && project.estimate[0]?.category) || "").toLowerCase();
+  const title = (project.site_name || project.title || "").toLowerCase();
+  const src = (imageSrc || project.site_image || "").toLowerCase();
+
+  const isMobileCat =
+    cat.includes("mobile") ||
+    cat.includes("ios") ||
+    cat.includes("android") ||
+    cat.includes("app development") ||
+    cat.includes("react native");
+  const isMobileSrc =
+    src.includes("/szn/") ||
+    src.includes("portrait") ||
+    src.includes("mobile") ||
+    src.includes("phone");
+  const isMobileTitle =
+    title.includes("styling app") ||
+    title.includes("mobile app") ||
+    title.includes("yourszn");
+
+  return Boolean(isMobileCat || isMobileSrc || isMobileTitle);
+}
+
+// Helper to extract all valid non-empty mockup images from MongoDB
+function getValidMockupImages(project) {
+  if (!project) return [];
+  const candidates = [];
+
+  // 1. Primary site_image
+  if (project.site_image && typeof project.site_image === "string" && project.site_image.trim()) {
+    candidates.push(project.site_image.trim());
+  }
+
+  // 2. Final images array or string
+  if (Array.isArray(project.final_img)) {
+    project.final_img.forEach((img) => {
+      if (typeof img === "string" && img.trim()) {
+        candidates.push(img.trim());
+      }
+    });
+  } else if (typeof project.final_img === "string" && project.final_img.trim()) {
+    candidates.push(project.final_img.trim());
+  }
+
+  // 3. Alternative mockups / images / gallery / screens arrays if present
+  const altArrays = [project.mockups, project.images, project.gallery, project.screenshots, project.screens];
+  altArrays.forEach((arr) => {
+    if (Array.isArray(arr)) {
+      arr.forEach((img) => {
+        if (typeof img === "string" && img.trim()) {
+          candidates.push(img.trim());
+        }
+      });
+    }
+  });
+
+  // Return unique list preserving order
+  return Array.from(new Set(candidates));
+}
+
+// Helper to generate human-readable screen captions from image paths
+function formatScreenCaption(imgSrc, index) {
+  if (!imgSrc || typeof imgSrc !== "string") return `Screen Showcase ${index + 1}`;
+
+  const filename = imgSrc.split("/").pop().replace(/\.[^/.]+$/, "");
+  const clean = filename.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+  const lower = clean.toLowerCase();
+
+  if (lower.includes("featured look")) return "Featured Look Screen";
+  if (lower.includes("looks detail")) return "Looks Detail View";
+  if (lower.includes("weekly add-ons") || lower.includes("weekly add ons")) return "Weekly Add-Ons Screen";
+  if (lower.includes("home")) return "Home & Discover Screen";
+  if (lower.includes("main")) return "Main Dashboard Screen";
+
+  if (clean.length > 2 && !clean.startsWith("blob")) {
+    return clean
+      .split(" ")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+  }
+
+  return `Screen Showcase ${index + 1}`;
+}
+
 function PortfolioDetailsContent() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -130,11 +217,15 @@ function PortfolioDetailsContent() {
   const prevProject = allProjects[prevIndex];
   const nextProject = allProjects[nextIndex];
 
-  // Field derivations based on MongoDB schema
+  // Extract all non-empty mockup images from MongoDB
+  const allMockupImages = getValidMockupImages(currentProject);
+
   const heroImage =
-    currentProject.site_image ||
-    (currentProject.final_img && currentProject.final_img[0]) ||
+    (currentProject.site_image && currentProject.site_image.trim()) ||
+    allMockupImages[0] ||
     "/pocketbook_image.webp";
+
+  const isMobile = isMobileProject(currentProject, heroImage);
 
   const category =
     currentProject.category ||
@@ -255,27 +346,44 @@ function PortfolioDetailsContent() {
             </div>
           </div>
 
-          {/* Browser Mockup Frame */}
-          <div className={styles.mockupFrame}>
-            <div className={styles.mockupHeader}>
-              <div className={styles.windowDots}>
-                <span className={styles.dotRed}></span>
-                <span className={styles.dotYellow}></span>
-                <span className={styles.dotGreen}></span>
+          {/* Device Mockup Frame (Mobile Phone or Desktop Browser) */}
+          {isMobile ? (
+            <div className={styles.mobileDeviceMockupFrame}>
+              <div className={styles.mobileDynamicIsland}>
+                <span className={styles.cameraLens}></span>
               </div>
-              <div className={styles.urlPill}>https://{mockupUrl}</div>
+              <Image
+                src={heroImage}
+                alt={`${currentProject.site_name || currentProject.title} Mobile App Mockup`}
+                width={440}
+                height={880}
+                className={styles.mobileDeviceImage}
+                priority
+                sizes="(max-width: 640px) 320px, 440px"
+              />
             </div>
+          ) : (
+            <div className={styles.mockupFrame}>
+              <div className={styles.mockupHeader}>
+                <div className={styles.windowDots}>
+                  <span className={styles.dotRed}></span>
+                  <span className={styles.dotYellow}></span>
+                  <span className={styles.dotGreen}></span>
+                </div>
+                <div className={styles.urlPill}>https://{mockupUrl}</div>
+              </div>
 
-            <Image
-              src={heroImage}
-              alt={`${currentProject.site_name || currentProject.title} Mockup Showcase`}
-              width={1080}
-              height={620}
-              className={styles.mockupImage}
-              priority
-              sizes="(max-width: 768px) 100vw, 1080px"
-            />
-          </div>
+              <Image
+                src={heroImage}
+                alt={`${currentProject.site_name || currentProject.title} Mockup Showcase`}
+                width={1080}
+                height={620}
+                className={styles.mockupImage}
+                priority
+                sizes="(max-width: 768px) 100vw, 1080px"
+              />
+            </div>
+          )}
         </section>
 
         {/* Key Impact Metrics Grid */}
@@ -324,6 +432,20 @@ function PortfolioDetailsContent() {
           </div>
         </div>
 
+        {/* Dedicated Project Overview & Technical Scope Section */}
+        {currentProject.description &&
+          currentProject.description.trim() !== (currentProject.site_intro || "").trim() && (
+            <section className={styles.descriptionSection}>
+              <div className={styles.descriptionCard}>
+                <div className={styles.descriptionHeader}>
+                  <FiLayers size={24} className={styles.descriptionIcon} />
+                  <h2 className={styles.descriptionTitle}>Project Overview & Technical Scope</h2>
+                </div>
+                <p className={styles.descriptionText}>{currentProject.description}</p>
+              </div>
+            </section>
+          )}
+
         {/* Dedicated Planning & Strategy Section */}
         {(currentProject.planning_title || currentProject.planning_text) && (
           <section className={styles.planningSection}>
@@ -340,23 +462,27 @@ function PortfolioDetailsContent() {
         )}
 
         {/* Challenge vs Architectural Solution Comparison (if provided) */}
-        {currentProject.challenge && currentProject.solution && (
+        {(currentProject.challenge || currentProject.solution) && (
           <div className={styles.challengeSolutionGrid}>
-            <div className={styles.narrativeCard}>
-              <h3>
-                <FiShield color="var(--accent-primary)" size={24} />
-                <span>The Challenge</span>
-              </h3>
-              <p>{currentProject.challenge}</p>
-            </div>
+            {currentProject.challenge && (
+              <div className={styles.narrativeCard}>
+                <h3>
+                  <FiShield color="var(--accent-primary)" size={24} />
+                  <span>The Challenge</span>
+                </h3>
+                <p>{currentProject.challenge}</p>
+              </div>
+            )}
 
-            <div className={styles.narrativeCard}>
-              <h3>
-                <FiZap color="#38bdf8" size={24} />
-                <span>The Architectural Solution</span>
-              </h3>
-              <p>{currentProject.solution}</p>
-            </div>
+            {currentProject.solution && (
+              <div className={styles.narrativeCard}>
+                <h3>
+                  <FiZap color="#38bdf8" size={24} />
+                  <span>The Architectural Solution</span>
+                </h3>
+                <p>{currentProject.solution}</p>
+              </div>
+            )}
           </div>
         )}
 
@@ -442,16 +568,17 @@ function PortfolioDetailsContent() {
           </section>
         )}
 
-        {/* Final Results & Showcase */}
+        {/* Final Results & All Mockups Showcase */}
         {(currentProject.final_title ||
           currentProject.final_text ||
-          (currentProject.final_img && currentProject.final_img.length > 0)) && (
+          allMockupImages.length > 0) && (
           <section className={styles.finalResultsSection}>
             <div className={styles.finalResultsCard}>
               <div className={styles.finalResultsHeader}>
                 <FiAward size={28} style={{ color: "#10b981", flexShrink: 0 }} />
                 <h2 className={styles.finalResultsTitle}>
-                  {currentProject.final_title || "Final Results & Business Impact"}
+                  {currentProject.final_title ||
+                    (isMobile ? "App Screens & Visual Showcase" : "Final Results & Mockup Showcase")}
                 </h2>
               </div>
 
@@ -459,23 +586,56 @@ function PortfolioDetailsContent() {
                 <p className={styles.finalResultsText}>{currentProject.final_text}</p>
               )}
 
-              {currentProject.final_img && currentProject.final_img.length > 0 && (
-                <div className={styles.finalGalleryGrid}>
-                  {currentProject.final_img.map((imgSrc, idx) => (
-                    <div key={idx} className={styles.finalImageFrame}>
-                      <Image
-                        src={imgSrc}
-                        alt={`${currentProject.site_name || currentProject.title} Final Result ${idx + 1}`}
-                        width={1080}
-                        height={620}
-                        className={styles.finalImage}
-                        loading="lazy"
-                        sizes="(max-width: 768px) 100vw, 1080px"
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
+              {allMockupImages.length > 0 &&
+                (isMobile ? (
+                  <div className={styles.mobileAppScreensGrid}>
+                    {allMockupImages.map((imgSrc, idx) => (
+                      <div key={idx} className={styles.mobileAppCard}>
+                        <div className={styles.mobileDynamicIsland}>
+                          <span className={styles.cameraLens}></span>
+                        </div>
+                        <Image
+                          src={imgSrc}
+                          alt={`${currentProject.site_name || currentProject.title} Screen ${idx + 1}`}
+                          width={380}
+                          height={760}
+                          className={styles.mobileAppCardImage}
+                          loading="lazy"
+                          sizes="(max-width: 640px) 300px, 380px"
+                        />
+                        <span className={styles.mobileAppCardCaption}>
+                          {formatScreenCaption(imgSrc, idx)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.finalGalleryGrid}>
+                    {allMockupImages.map((imgSrc, idx) => (
+                      <div key={idx} className={styles.finalImageFrame}>
+                        <div className={styles.mockupHeader}>
+                          <div className={styles.windowDots}>
+                            <span className={styles.dotRed}></span>
+                            <span className={styles.dotYellow}></span>
+                            <span className={styles.dotGreen}></span>
+                          </div>
+                          <div className={styles.urlPill}>
+                            {formatScreenCaption(imgSrc, idx)}
+                          </div>
+                        </div>
+                        <Image
+                          src={imgSrc}
+                          alt={`${currentProject.site_name || currentProject.title} Showcase ${idx + 1}`}
+                          width={1080}
+                          height={620}
+                          className={styles.finalImage}
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, 1080px"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
             </div>
           </section>
         )}

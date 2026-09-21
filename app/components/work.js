@@ -66,8 +66,19 @@ function Work() {
 
           <div className={styles.projectsGrid}>
             {displayedProjects.map((item) => {
-              const imageSrc = (item.final_img && item.final_img[0]) || item.site_image || "/troyagency.png";
+              const validFinalImg = Array.isArray(item.final_img)
+                ? item.final_img.find((img) => typeof img === "string" && img.trim().length > 0)
+                : null;
+              const imageSrc =
+                (item.site_image && item.site_image.trim()) ||
+                validFinalImg ||
+                "/troyagency.png";
               const category = item.category || (item.estimate && item.estimate[0]?.category) || "Web Development";
+              const isMobile =
+                category.toLowerCase().includes("mobile") ||
+                category.toLowerCase().includes("app") ||
+                imageSrc.includes("/szn/") ||
+                imageSrc.includes("portrait");
               const tags =
                 (Array.isArray(item.tags) && item.tags.length > 0
                   ? item.tags
@@ -83,7 +94,7 @@ function Work() {
                       src={imageSrc}
                       width={600}
                       height={340}
-                      className={styles.projectImage}
+                      className={isMobile ? styles.projectImageContain : styles.projectImage}
                       alt={item.site_name || item.title}
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"

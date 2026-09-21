@@ -184,7 +184,53 @@
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+/* Mobile Phone Device Mockup Frame */
+.mobileDeviceMockupFrame {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto 60px auto;
+  background: #090a0f;
+  border: 3px solid rgba(255, 255, 255, 0.14);
+  border-radius: 44px;
+  padding: 12px;
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.9), 0 0 45px -5px rgba(99, 102, 241, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobileDynamicIsland {
+  width: 110px;
+  height: 24px;
+  background: #000000;
+  border-radius: 20px;
+  margin: 4px auto 12px auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 14px;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cameraLens {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #111827;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.mobileDeviceImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 32px;
+  object-fit: contain;
 }
 
 /* Impact Metrics Grid */
@@ -667,10 +713,110 @@
   margin-bottom: 32px;
 }
 
+/* Project Overview / Technical Scope Section */
+.descriptionSection {
+  margin-bottom: 70px;
+}
+
+.descriptionCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.descriptionCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent-secondary);
+}
+
+.descriptionHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.descriptionIcon {
+  color: var(--accent-secondary);
+  flex-shrink: 0;
+}
+
+.descriptionTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.descriptionText {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Gallery of Multiple Mockups */
 .finalGalleryGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
+}
+
+/* Multi-column grid for mobile app mockups (portrait) */
+.mobileAppScreensGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  justify-items: center;
+  margin-top: 12px;
+}
+
+.mobileAppCard {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(13, 16, 26, 0.95);
+  border: 2px solid var(--border-subtle);
+  border-radius: 36px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+  transition: all 0.35s ease;
+}
+
+.mobileAppCard:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(255, 51, 88, 0.2);
+}
+
+.mobileAppCardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+.mobileAppCardCaption {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 4px 12px 6px 12px;
+  text-align: center;
 }
 
 .finalImageFrame {
@@ -687,7 +833,7 @@
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.4s ease;
 }
 
@@ -782,5 +928,42 @@
 
   .mockupFrame {
     margin-bottom: 40px;
+    border-radius: var(--radius-md);
+  }
+
+  .mockupHeader {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .mockupImage,
+  .finalImage {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  .mobileDeviceMockupFrame {
+    max-width: 320px;
+    border-radius: 34px;
+    padding: 8px;
+    margin-bottom: 40px;
+  }
+
+  .mobileDeviceImage {
+    border-radius: 26px;
+    object-fit: contain !important;
+  }
+
+  .mobileAppCard {
+    max-width: 320px;
+    border-radius: 30px;
+    padding: 8px;
+  }
+
+  .mobileAppCardImage {
+    border-radius: 22px;
+    object-fit: contain !important;
   }
 }
