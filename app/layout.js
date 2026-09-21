@@ -1,6 +1,7 @@
 import "./globals.css";
 import Script from "next/script";
 import Loader from "./components/loader";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://jyotipatowary.dev"),
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {children}
+        <Analytics />
       </body>
     </html>
   );
