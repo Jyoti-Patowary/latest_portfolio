@@ -25,11 +25,11 @@ function getTechStack(project) {
 
   // 1. Direct tech stack or tags field from MongoDB
   const rawStack =
+    project.tags ||
     project.tech_stack ||
     project.techStack ||
     project.technologies ||
     project.technology ||
-    project.tags ||
     project.stack ||
     project.tools;
 
