@@ -51,14 +51,14 @@ function AboutPage() {
       {/* Header Banner */}
       <section className={styles.aboutPageHero}>
         <div className={styles.container}>
-          <span className="badge" style={{ marginBottom: "16px" }}>
-            The Developer Behind the Code
+          <span className={styles.sectionLabel} style={{ marginBottom: "16px", display: "inline-block" }}>
+            About Me
           </span>
           <h1 className={styles.pageTitle}>
-            Engineering with <span className="glow-text">Empathy & Precision</span>
+            Engineering with empathy and precision.
           </h1>
           <p className={styles.pageSubtitle}>
-            A self-taught full-stack developer turning abstract concepts into high-performing, interactive digital realities.
+            Self-taught. Built from real projects, not just tutorials.
           </p>
         </div>
       </section>
@@ -68,13 +68,13 @@ function AboutPage() {
         <div className={styles.container}>
           <div className={styles.storyCard}>
             <div className={styles.storyContent}>
-              <span className={styles.sectionPre}>{"// Chapter 01"}</span>
-              <h2>The Techie with a <span>Creative Twist</span></h2>
+              <span className={styles.sectionLabel}>Chapter one</span>
+              <h2>I build web apps where the code is clean and the <span>design isn&apos;t an afterthought.</span></h2>
               <p>
-                Hi there! I&apos;m Jyoti Patowary. I build web applications where clean code meets modern aesthetics. While I enjoy solving complex architectural challenges in production environments, I frequently collaborate with clients and startups on bespoke freelance projects.
+                I&apos;m Jyoti. Most of my work is production stuff — real businesses, real users — but I still take on freelance projects when something interesting comes along.
               </p>
               <p>
-                For me, web engineering is never just about typing syntax. It is about distilling ambitious ideas into digital experiences that are intuitive, fast, and enjoyable for users while delivering tangible results for businesses.
+                Code isn&apos;t the point, honestly. The point is taking a vague idea and making it feel obvious once it&apos;s built. Fast, intuitive, and something the business actually benefits from.
               </p>
             </div>
             <div className={styles.storyImageWrapper}>
@@ -100,13 +100,16 @@ function AboutPage() {
               />
             </div>
             <div className={styles.storyContent}>
-              <span className={styles.sectionPre}>{"// Chapter 02"}</span>
-              <h2>From Hospitality to Code: <span>My Journey</span></h2>
+              <span className={styles.sectionLabel}>Chapter two — from hospitality to code</span>
+              <h2>Nobody&apos;s path is a <span>straight line.</span></h2>
               <p>
-                Life rarely moves in a straight line. Before entering software engineering, I spent years working in hospitality management as a hotelier. That experience proved to be my secret weapon: it taught me deep human empathy, composure under high pressure, and the art of anticipating user needs.
+                Before software, I worked in hotels — hospitality management, the kind of job where you&apos;re solving five problems at once and none of them can wait.
               </p>
               <p>
-                When I committed to becoming a self-taught software developer, I brought that same work ethic with me. Countless hours dedicated to deep-dive tutorials, documentation, and building real-world projects forged my technical foundation. Transforming ideas into working software remains one of the most rewarding pursuits in my life.
+                That job taught me patience. Composure. How to notice what a guest needs before they say it out loud.
+              </p>
+              <p>
+                When I switched to development, I brought all of that with me. Hours of tutorials, docs, broken code at 1am, actual projects that forced me to learn faster than any course could. It stuck. And honestly — building something from nothing is still one of the best feelings I know.
               </p>
             </div>
           </div>
@@ -117,9 +120,9 @@ function AboutPage() {
       <section className={styles.techSection}>
         <div className={styles.container}>
           <div className={styles.techTitleArea}>
-            <span className={styles.sectionPre}>{"// Core Competencies"}</span>
+            <span className={styles.sectionLabel}>Toolbox</span>
             <h2 className={styles.techTitle}>
-              My Tech Stack: <span>Tools of the Trade</span>
+              Technologies & Frameworks
             </h2>
           </div>
 
@@ -128,7 +131,7 @@ function AboutPage() {
               const Icon = tech.icon;
               return (
                 <div key={idx} className={styles.techCard}>
-                  <Icon size={44} style={{ color: tech.color }} />
+                  <Icon size={38} style={{ color: tech.color }} />
                   <span className={styles.techName}>{tech.name}</span>
                 </div>
               );

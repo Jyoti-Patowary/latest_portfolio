@@ -22,10 +22,9 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
-  height: 350px;
-  background: radial-gradient(ellipse at center, rgba(255, 51, 88, 0.14) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 75%);
-  filter: blur(50px);
+  width: 600px;
+  height: 250px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -108,9 +107,9 @@
 }
 
 .featuredCard:hover {
-  border-color: rgba(255, 51, 88, 0.35);
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(255, 51, 88, 0.25);
-  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
 }
 
 .featuredBody {
@@ -270,9 +269,9 @@
 }
 
 .articleCard:hover {
-  border-color: rgba(255, 51, 88, 0.35);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(255, 51, 88, 0.2);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6);
 }
 
 .cardImageWrap {
@@ -410,8 +409,8 @@
 }
 
 .emailInput:focus {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 12px rgba(255, 51, 88, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
 }
 
 .subscribeBtn {

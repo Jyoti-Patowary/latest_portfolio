@@ -34,14 +34,17 @@ const Footer = () => {
       <div className={styles.container}>
         {/* Bold Statement Box */}
         <div className={styles.statementBox}>
-          <span className={styles.preTitle}>Ready to Start?</span>
+          <span className={styles.preTitle}>Get in touch</span>
           <h2 className={styles.headline}>
-            Have an idea in mind? <br />
-            Let&apos;s build something <span className={styles.headlineHighlight}>extraordinary</span>.
+            Let&apos;s talk about building <br />
+            something <span className={styles.headlineHighlight}>together</span>.
           </h2>
+          <p className={styles.statementSubtext}>
+            Whether you have an engineering role, need a contract developer, or just want to chat tech—my inbox is open.
+          </p>
           <Link href="/pages/contact">
             <button className={`btn-primary ${styles.statementCta}`}>
-              Start a Conversation &rarr;
+              Send a Message &rarr;
             </button>
           </Link>
         </div>
@@ -54,7 +57,7 @@ const Footer = () => {
               <span style={{ color: "var(--accent-primary)" }}>.</span>
             </div>
             <p className={styles.brandTagline}>
-              Full-Stack Developer crafting fast, scalable, and visually compelling digital experiences from concept to deployment.
+              Full-Stack Developer building fast, dependable, and thoughtful web applications with modern Next.js, React, and Node.js.
             </p>
             <div className={styles.socialRow}>
               <a
@@ -100,7 +103,7 @@ const Footer = () => {
               <li><Link href="/" className={styles.linkItem}>Home</Link></li>
               <li><Link href="/pages/workPage" className={styles.linkItem}>Featured Work</Link></li>
               <li><Link href="/pages/about" className={styles.linkItem}>My Story</Link></li>
-              <li><Link href="/pages/blogs" className={styles.linkItem}>Technical Blogs</Link></li>
+              <li><Link href="/pages/blogs" className={styles.linkItem}>Writing & Notes</Link></li>
               <li><Link href="/pages/contact" className={styles.linkItem}>Contact Me</Link></li>
             </ul>
           </div>
@@ -109,10 +112,10 @@ const Footer = () => {
             <h4 className={styles.colTitle}>Specialization</h4>
             <ul className={styles.linkList}>
               <li className={styles.linkItem}>Next.js & React Apps</li>
-              <li className={styles.linkItem}>Full-Stack MERN Architecture</li>
-              <li className={styles.linkItem}>High-Converting E-Commerce</li>
-              <li className={styles.linkItem}>Performance Optimization</li>
-              <li className={styles.linkItem}>UI/UX Systems</li>
+              <li className={styles.linkItem}>Full-Stack Architecture</li>
+              <li className={styles.linkItem}>E-Commerce & Shopify</li>
+              <li className={styles.linkItem}>Custom Internal Tooling</li>
+              <li className={styles.linkItem}>API & Database Design</li>
             </ul>
           </div>
 
@@ -139,8 +142,8 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
-          <p>© {currentYear} Jyoti Patowary. Built with Next.js & React.</p>
-          <p>Designed for speed, resilience & bold impact.</p>
+          <p>© {currentYear} Jyoti Patowary. Handcrafted with Next.js.</p>
+          <p>Guwahati, Assam, India — Available worldwide</p>
         </div>
       </div>
 

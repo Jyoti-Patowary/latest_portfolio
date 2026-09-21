@@ -64,14 +64,14 @@ const Contact = () => {
       {/* Header Banner */}
       <section className={styles.contactPageHero}>
         <div className={styles.container}>
-          <span className="badge" style={{ marginBottom: "16px" }}>
-            Let&apos;s Connect
+          <span className={styles.channelLabel} style={{ marginBottom: "16px", display: "inline-block" }}>
+            Contact
           </span>
           <h1 className={styles.pageTitle}>
-            Start a <span className="glow-text">Conversation</span>
+            Let&apos;s work together.
           </h1>
           <p className={styles.pageSubtitle}>
-            Have a project, job opportunity, or contract in mind? Reach out directly or fill out the form below.
+            Have an engineering role, freelance project, or technical question? Reach out directly or send a message below.
           </p>
         </div>
       </section>

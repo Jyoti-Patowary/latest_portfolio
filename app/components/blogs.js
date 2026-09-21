@@ -12,9 +12,9 @@ function Blogs() {
     <section id="blogs" className={styles.blogSection}>
       <div className={styles.container}>
         <div className={styles.headerArea}>
-          <span className={styles.sectionPre}>{"// Thoughts & Engineering"}</span>
+          <span className={styles.sectionPre}>Writing & Notes</span>
           <h2 className={styles.title}>
-            Latest <span>Insights</span>
+            Recent Articles
           </h2>
         </div>
 
@@ -57,7 +57,7 @@ function Blogs() {
                   rel="noopener noreferrer"
                   className={styles.readMoreLink}
                 >
-                  <span>Read on Medium</span>
+                  <span>Read Article</span>
                   <IoIosArrowRoundForward size={22} />
                 </a>
               </div>
@@ -68,7 +68,7 @@ function Blogs() {
         <div className={styles.ctaArea}>
           <Link href="/pages/blogs">
             <button className="btn-secondary">
-              <span>View All Publications</span>
+              <span>View All Articles</span>
               <IoIosArrowRoundForward size={22} />
             </button>
           </Link>

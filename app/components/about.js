@@ -13,7 +13,7 @@ function About() {
     <section id="about" className={styles.aboutSection}>
       <div className={styles.container}>
         <div className={styles.aboutGrid}>
-          {/* Left Column: Portrait with Floating Badge */}
+          {/* Left Column: Portrait */}
           <div className={styles.imageCol}>
             <div className={styles.imageFrame}>
               <Image
@@ -23,50 +23,41 @@ function About() {
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 420px"
               />
-              <div className={styles.floatingExperienceBadge}>
-                <span className={styles.expNumber}>3+</span>
-                <div className={styles.expText}>
-                  <strong>Years Building for the Web</strong>
-                  <span>From Hospitality to Full-Stack Engineering</span>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Right Column: Bio & Core Pillars */}
+          {/* Right Column: Grounded Human Narrative */}
           <div className={styles.textCol}>
-            <span className={styles.sectionPre}>{"// Who I Am"}</span>
-            <h2 className={styles.sectionTitle}>
-              From Hospitality to Code: <br />
-              <span>Crafting Digital Products with Purpose</span>
-            </h2>
-
-            <p className={styles.narrativeText}>
-              My path to engineering is unique — I transitioned from a career in <strong>hospitality management</strong> into self-taught <strong>web development</strong>. Managing fast-paced hotel environments instilled an instinct for client empathy, proactive problem-solving, and ruthless attention to detail.
-            </p>
-
-            <p className={styles.narrativeText}>
-              Today, I channel that exact mindset into building clean, scalable web architectures. Whether freelancing for growing brands or collaborating with engineering teams, I prioritize fast load times, accessible interfaces, and intuitive user experiences.
-            </p>
-
-            {/* Core Pillars */}
-            <div className={styles.pillarGrid}>
-              <div className={styles.pillarCard}>
-                <h4>Client & User Empathy</h4>
-                <p>Rooted in hospitality — understanding human needs before writing a single line of code.</p>
-              </div>
-
-              <div className={styles.pillarCard}>
-                <h4>Modern Web Standards</h4>
-                <p>Next.js 14 App Router, React Server Components, TypeScript, and clean modular CSS.</p>
-              </div>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>From hospitality to code</span>
+              <h2 className={styles.sectionTitle}>
+                Who I am.
+              </h2>
             </div>
+
+            <p className={styles.narrativeText}>
+              I didn&apos;t start out as a developer. I spent years in hospitality management before I taught myself to code. Sounds like a strange jump. It wasn&apos;t, really — hotels teach you to read people fast, stay calm when everything&apos;s on fire, and notice the small stuff that ruins an experience if you miss it.
+            </p>
+
+            <p className={styles.narrativeText}>
+              Turns out that&apos;s exactly what good web development needs too. You&apos;re not just writing functions. You&apos;re thinking about the person on the other end — will this load fast enough, is this button where they expect it, does this actually solve their problem.
+            </p>
+
+            <p className={styles.narrativeText}>
+              That&apos;s the lens I bring to every project now, whether it&apos;s a Shopify store or a full-stack app from scratch.
+            </p>
+
+            <ul className={styles.bulletList}>
+              <li><strong>Client empathy.</strong> I ask what the business actually needs before I touch a keyboard.</li>
+              <li><strong>Modern stack.</strong> Next.js, React Server Components, TypeScript — the tools that let me build fast without cutting corners.</li>
+            </ul>
 
             {/* Actions & Socials */}
             <div className={styles.actionRow}>
               <Link href="/pages/about">
-                <button className="btn-primary" style={{ padding: "12px 26px" }}>
-                  Read My Full Story &rarr;
+                <button className="btn-secondary">
+                  <span>Read my full story</span>
+                  <span>&rarr;</span>
                 </button>
               </Link>
 
@@ -78,7 +69,7 @@ function About() {
                   className={styles.socialBtn}
                   aria-label="GitHub"
                 >
-                  <FaGithub size={18} />
+                  <FaGithub size={16} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/jyoti-p-b8a886239/"
@@ -87,7 +78,7 @@ function About() {
                   className={styles.socialBtn}
                   aria-label="LinkedIn"
                 >
-                  <FaLinkedinIn size={18} />
+                  <FaLinkedinIn size={16} />
                 </a>
                 <a
                   href="https://twitter.com/J__Patowary"
@@ -96,14 +87,14 @@ function About() {
                   className={styles.socialBtn}
                   aria-label="Twitter"
                 >
-                  <FaXTwitter size={18} />
+                  <FaXTwitter size={16} />
                 </a>
                 <a
                   href="mailto:jpatowary8@gmail.com"
                   className={styles.socialBtn}
                   aria-label="Email"
                 >
-                  <IoMail size={18} />
+                  <IoMail size={16} />
                 </a>
               </div>
             </div>

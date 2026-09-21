@@ -11,7 +11,7 @@ const menuItems = [
   { name: "Home", link: "/" },
   { name: "Projects", link: "/pages/workPage" },
   { name: "About", link: "/pages/about" },
-  { name: "Insights", link: "/pages/blogs" },
+  { name: "Writing", link: "/pages/blogs" },
   { name: "Contact", link: "/pages/contact" },
 ];
 
@@ -77,7 +77,7 @@ function Nav() {
         <div className={styles.rightGroup}>
           <Link href="/pages/contact">
             <button className={styles.ctaBtn}>
-              <span>Let&apos;s Talk</span>
+              <span>Get in touch</span>
               <span style={{ fontSize: "14px" }}>&rarr;</span>
             </button>
           </Link>
@@ -110,7 +110,7 @@ function Nav() {
 
         <Link href="/pages/contact" onClick={() => setIsMobileMenuOpen(false)}>
           <button className={`${styles.ctaBtn} ${styles.mobileCta}`}>
-            Let&apos;s Build Together &rarr;
+            Get in touch &rarr;
           </button>
         </Link>
 

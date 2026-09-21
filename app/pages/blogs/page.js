@@ -76,13 +76,13 @@ const BlogPage = () => {
           <div className={styles.heroGlow}></div>
           <div className={styles.heroContent}>
             <span className="badge">
-              Knowledge Base // System Design & Code
+              Writing & Technical Notes
             </span>
             <h1 className={styles.pageTitle}>
-              Technical <span className="glow-text">Insights</span> & Notes
+              Articles & Notes
             </h1>
             <p className={styles.pageSubtitle}>
-              Deep dives on Next.js architectures, modern full-stack engineering, AI-augmented development, and building high-performance web systems.
+              Notes on Next.js architectures, modern full-stack engineering, performance, and building production web applications.
             </p>
 
             {/* Category Filter Tabs */}
@@ -108,7 +108,7 @@ const BlogPage = () => {
                 <div>
                   <div className={styles.featuredMeta}>
                     <span className={styles.featuredCategory}>
-                      Featured // {featuredArticle.category || featuredArticle.tag}
+                      Featured • {featuredArticle.category || featuredArticle.tag}
                     </span>
                     <span className={styles.featuredReadTime}>
                       {featuredArticle.date} • {featuredArticle.readTime}

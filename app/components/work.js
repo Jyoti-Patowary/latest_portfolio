@@ -39,14 +39,10 @@ function Work() {
       {isWorkPage && (
         <div className={styles.workPageHeader}>
           <div className={styles.container}>
-            <span className="badge" style={{ marginBottom: "16px" }}>
-              Case Studies & Deliverables
-            </span>
-            <h1 className={styles.pageTitle}>
-              Selected <span className="glow-text">Works</span>
-            </h1>
+            <span className={styles.sectionLabel}>Portfolio & Case Studies</span>
+            <h1 className={styles.pageTitle}>Selected Works</h1>
             <p className={styles.pageSubtitle}>
-              A curated selection of client platforms, e-commerce storefronts, and full-stack web applications.
+              A curated selection of client platforms, custom internal tools, and full-stack web applications.
             </p>
           </div>
         </div>
@@ -57,10 +53,11 @@ function Work() {
         <div className={styles.container}>
           {!isWorkPage && (
             <div className={styles.worksTitleArea}>
-              <span className={styles.sectionPre}>{"// Portfolio"}</span>
-              <h2 className={styles.worksHeading}>
-                Featured <span>Case Studies</span>
-              </h2>
+              <span className={styles.sectionLabel}>Selected Work</span>
+              <h2 className={styles.worksHeading}>Projects I&apos;ve built and shipped.</h2>
+              <p className={styles.worksSubtitle}>
+                Production web applications, custom management dashboards, and modern e-commerce storefronts.
+              </p>
             </div>
           )}
 
@@ -89,7 +86,6 @@ function Work() {
               return (
                 <div key={item._id} className={styles.projectCard}>
                   <div className={styles.imageWrapper}>
-                    <span className={styles.categoryBadge}>{category}</span>
                     <Image
                       src={imageSrc}
                       width={600}
@@ -103,9 +99,13 @@ function Work() {
 
                   <div className={styles.cardContent}>
                     <div className={styles.cardTop}>
+                      <div className={styles.cardMetaRow}>
+                        <span className={styles.categoryName}>{category}</span>
+                      </div>
+
                       <h3 className={styles.projectTitle}>{item.title}</h3>
                       <p className={styles.projectIntro}>
-                        {item.site_intro || "Engineered with precision for optimal user experience, fast load speeds, and business growth."}
+                        {item.site_intro || item.description || "Engineered with precision for optimal user experience, fast load speeds, and business growth."}
                       </p>
 
                       <div className={styles.tagsRow}>
@@ -131,7 +131,8 @@ function Work() {
                           className={styles.externalLink}
                           aria-label={`Visit ${item.site_name} live site`}
                         >
-                          <FiExternalLink size={16} />
+                          <span>Live Demo</span>
+                          <FiExternalLink size={14} />
                         </a>
                       )}
                     </div>
@@ -144,9 +145,9 @@ function Work() {
           {!isWorkPage && (
             <div className={styles.ctaArea}>
               <Link href="/pages/workPage">
-                <button className="btn-secondary" style={{ padding: "14px 32px" }}>
-                  <span>Explore All Projects</span>
-                  <IoIosArrowRoundForward size={22} />
+                <button className="btn-secondary">
+                  <span>Explore All Projects ({portfolioData.length})</span>
+                  <IoIosArrowRoundForward size={20} />
                 </button>
               </Link>
             </div>

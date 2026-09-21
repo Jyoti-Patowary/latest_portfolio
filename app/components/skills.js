@@ -39,13 +39,16 @@ const Skills = () => {
     <section id="skills" className={styles.mainContainer}>
       <div className={styles.container}>
         <div className={styles.headerArea}>
-          <span className={styles.sectionPre}>{"// Capabilities"}</span>
+          <span className={styles.sectionLabel}>Technical Stack</span>
           <h2 className={styles.skillTitle}>
-            Tools of My <span>Trade</span>
+            Tools & frameworks I use.
           </h2>
+          <p className={styles.sectionDesc}>
+            Technologies I reach for when engineering scalable web applications, e-commerce stores, and custom software.
+          </p>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Category Filter Tabs */}
         <div className={styles.filterTabs}>
           {categories.map((cat, idx) => (
             <button
@@ -68,14 +71,12 @@ const Skills = () => {
                     src={skill.image || "/skills-images/nextjs.svg"}
                     alt={`${skill.skill || "Skill"} logo`}
                     className={styles.logoImg}
-                    width={36}
-                    height={36}
+                    width={32}
+                    height={32}
                     loading="lazy"
                   />
                 </div>
-                {skill.level && (
-                  <span className={styles.levelBadge}>{skill.level}</span>
-                )}
+                <span className={styles.categoryTag}>{skill.category || "Development"}</span>
               </div>
 
               <div>

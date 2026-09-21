@@ -297,11 +297,11 @@ function PortfolioDetailsContent() {
         </div>
 
         {/* Hero Section */}
+        {/* Hero Section */}
         <section className={styles.heroSection}>
-          <div className={styles.heroGlow}></div>
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>
-              <span className="badge-status">Case Study // {category}</span>
+              <span className={styles.categoryBadge}>{category}</span>
             </div>
 
             <h1 className={styles.heroTitle}>
@@ -309,7 +309,7 @@ function PortfolioDetailsContent() {
             </h1>
 
             <p className={styles.heroTagline}>
-              {currentProject.tagline || currentProject.site_intro || currentProject.description}
+              {currentProject.site_intro || currentProject.tagline || currentProject.description}
             </p>
 
             <div className={styles.actionRow}>
@@ -321,7 +321,7 @@ function PortfolioDetailsContent() {
                   className="btn-primary"
                 >
                   <span>Visit Live Website</span>
-                  <FiExternalLink size={18} />
+                  <FiExternalLink size={16} />
                 </a>
               )}
 
@@ -333,14 +333,14 @@ function PortfolioDetailsContent() {
                   className="btn-secondary"
                 >
                   <span>GitHub Repository</span>
-                  <FiExternalLink size={18} />
+                  <FiExternalLink size={16} />
                 </a>
               )}
 
               <Link href="/pages/workPage">
                 <button className="btn-secondary">
                   <span>Browse All Works</span>
-                  <FiArrowRight size={18} />
+                  <FiArrowRight size={16} />
                 </button>
               </Link>
             </div>
@@ -349,9 +349,6 @@ function PortfolioDetailsContent() {
           {/* Device Mockup Frame (Mobile Phone or Desktop Browser) */}
           {isMobile ? (
             <div className={styles.mobileDeviceMockupFrame}>
-              <div className={styles.mobileDynamicIsland}>
-                <span className={styles.cameraLens}></span>
-              </div>
               <Image
                 src={heroImage}
                 alt={`${currentProject.site_name || currentProject.title} Mobile App Mockup`}
@@ -365,12 +362,7 @@ function PortfolioDetailsContent() {
           ) : (
             <div className={styles.mockupFrame}>
               <div className={styles.mockupHeader}>
-                <div className={styles.windowDots}>
-                  <span className={styles.dotRed}></span>
-                  <span className={styles.dotYellow}></span>
-                  <span className={styles.dotGreen}></span>
-                </div>
-                <div className={styles.urlPill}>https://{mockupUrl}</div>
+                <span className={styles.urlPill}>https://{mockupUrl}</span>
               </div>
 
               <Image
@@ -385,19 +377,6 @@ function PortfolioDetailsContent() {
             </div>
           )}
         </section>
-
-        {/* Key Impact Metrics Grid */}
-        <div className={styles.metricsGrid}>
-          {metrics.map((m, idx) => (
-            <div key={idx} className={styles.metricCard}>
-              <span className={styles.metricValue}>
-                <span className={styles.metricHighlight}>{m.value}</span>
-              </span>
-              <span className={styles.metricLabel}>{m.label}</span>
-              <span className={styles.metricDesc}>{m.desc}</span>
-            </div>
-          ))}
-        </div>
 
         {/* Specifications & Tech Meta Bar */}
         <div className={styles.specsContainer}>
@@ -591,9 +570,6 @@ function PortfolioDetailsContent() {
                   <div className={styles.mobileAppScreensGrid}>
                     {allMockupImages.map((imgSrc, idx) => (
                       <div key={idx} className={styles.mobileAppCard}>
-                        <div className={styles.mobileDynamicIsland}>
-                          <span className={styles.cameraLens}></span>
-                        </div>
                         <Image
                           src={imgSrc}
                           alt={`${currentProject.site_name || currentProject.title} Screen ${idx + 1}`}
@@ -614,14 +590,9 @@ function PortfolioDetailsContent() {
                     {allMockupImages.map((imgSrc, idx) => (
                       <div key={idx} className={styles.finalImageFrame}>
                         <div className={styles.mockupHeader}>
-                          <div className={styles.windowDots}>
-                            <span className={styles.dotRed}></span>
-                            <span className={styles.dotYellow}></span>
-                            <span className={styles.dotGreen}></span>
-                          </div>
-                          <div className={styles.urlPill}>
+                          <span className={styles.urlPill}>
                             {formatScreenCaption(imgSrc, idx)}
-                          </div>
+                          </span>
                         </div>
                         <Image
                           src={imgSrc}
@@ -669,7 +640,7 @@ function PortfolioDetailsContent() {
               width: "100%",
             }}
           >
-            <IoIosArrowRoundBack size={28} color="var(--accent-primary)" />
+            <IoIosArrowRoundBack size={24} color="var(--accent-primary)" />
             <div>
               <span className={styles.navLabel}>← Previous Project</span>
               <div className={styles.navTitle}>{prevProject.site_name || prevProject.title}</div>
@@ -691,23 +662,21 @@ function PortfolioDetailsContent() {
               <span className={styles.navLabel}>Next Project →</span>
               <div className={styles.navTitle}>{nextProject.site_name || nextProject.title}</div>
             </div>
-            <IoIosArrowRoundForward size={28} color="var(--accent-primary)" />
+            <IoIosArrowRoundForward size={24} color="var(--accent-primary)" />
           </button>
         </div>
 
         {/* Bottom Consultation Banner */}
         <div className={styles.bottomCtaBanner}>
-          <span className="badge" style={{ marginBottom: "8px" }}>
-            Start A Project
-          </span>
-          <h2 className={styles.ctaTitle}>Ready to build something remarkable?</h2>
+          <span className={styles.sectionLabel}>Next Steps</span>
+          <h2 className={styles.ctaTitle}>Have questions about this project?</h2>
           <p className={styles.ctaSubtitle}>
-            Whether launching a bespoke platform from scratch or scaling an existing architecture, I can help you ship fast.
+            I&apos;m happy to discuss the technical decisions, architecture, or how we can collaborate on your next build.
           </p>
           <Link href="/pages/contact">
-            <button className="btn-primary" style={{ padding: "14px 36px", fontSize: "16px" }}>
-              <span>Let&apos;s Discuss Your Vision</span>
-              <IoIosArrowRoundForward size={24} />
+            <button className="btn-primary" style={{ padding: "12px 28px" }}>
+              <span>Start a Conversation</span>
+              <IoIosArrowRoundForward size={20} />
             </button>
           </Link>
         </div>
